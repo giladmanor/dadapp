@@ -11,7 +11,7 @@
     <feature name="SocialSharing">
         <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
     </feature>
-    <name>dadapp</name>
+    <name>DadaViz</name>
     <description>
         Dadaviz.com app
     </description>

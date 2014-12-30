@@ -42,7 +42,6 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\emotion.c
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\navbar.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\real.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\style.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\ionic.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\logo.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\app.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\ga.js \
