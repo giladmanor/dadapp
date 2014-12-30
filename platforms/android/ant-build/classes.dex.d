@@ -1,4 +1,11 @@
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes.dex : \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\dadaviz\app\BuildConfig.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\dadaviz\app\CordovaApp.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\dadaviz\app\R$attr.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\dadaviz\app\R$drawable.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\dadaviz\app\R$string.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\dadaviz\app\R$xml.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\dadaviz\app\R.class \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$1.class \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$2.class \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$3.class \
