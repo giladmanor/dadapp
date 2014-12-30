@@ -1,0 +1,20 @@
+@import "../lib/ionic/css/ionic.css";
+@import "navbar.css";
+@import "emotion.css";
+@import "real.css";
+
+body{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0
+}
+
+.flight-controll{
+	position:absolute;
+	top:30%;
+	width: 100%;
+	color:black;
+	text-align:center;
+}

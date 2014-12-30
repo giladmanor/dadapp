@@ -1,0 +1,19 @@
+div.real{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color: #FFFFF0;
+	overflow-y: auto;
+}
+
+div.real li{
+	font-size: 3em;
+	margin:0.2em;
+	margin-top:3em;
+	background-color: #808080;
+	height:100%;
+}
+
+

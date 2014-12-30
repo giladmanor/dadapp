@@ -1,0 +1,21 @@
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes.dex : \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$1.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$2.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$3.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionicframework\dadapp122553\BuildConfig.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionicframework\dadapp122553\CordovaApp.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionicframework\dadapp122553\R$attr.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionicframework\dadapp122553\R$drawable.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionicframework\dadapp122553\R$string.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionicframework\dadapp122553\R$xml.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\com\ionicframework\dadapp122553\R.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$1.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$2$1$1.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$2$1.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$2.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$3.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing$SocialSharingRunnable.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\nl\xservices\plugins\SocialSharing.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\classes\org\apache\cordova\device\Device.class \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\dexedLibs\classes-a167be1f46ca81cdd5972bc4382ba59c.jar \
