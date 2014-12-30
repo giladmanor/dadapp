@@ -1,0 +1,22 @@
+C:\Users\user\github\dadapp\platforms\android\bin\classes.dex : \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\BuildConfig.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\CordovaApp.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$attr.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$drawable.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$string.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$xml.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionic\keyboard\IonicKeyboard$1.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionic\keyboard\IonicKeyboard$2.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionic\keyboard\IonicKeyboard$3.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionic\keyboard\IonicKeyboard.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionicframework\dadapp122553\CordovaApp.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$1.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$2$1$1.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$2$1.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$2.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$3.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$SocialSharingRunnable.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\org\apache\cordova\device\Device.class \
+C:\Users\user\github\dadapp\platforms\android\bin\dexedLibs\classes-ebc722da5d8a00573026267e4be28471.jar \
