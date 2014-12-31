@@ -2,6 +2,7 @@
 @import "navbar.css";
 @import "emotion.css";
 @import "real.css";
+@import "viz.css";
 
 body{
 	position:absolute;

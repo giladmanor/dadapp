@@ -6,9 +6,11 @@
 		<title>vizap</title>
 
 		<link href="css/style.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
 
 		<!-- cordova script (this will be a 404 during development) -->
 		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/handlebars-v2.0.0.js"></script>
 		<script src="cordova.js"></script>
 
 		<!-- your app's js -->
@@ -16,43 +18,58 @@
 		<script src="js/services.js"></script>
 	</head>
 	<body  class="platform-android platform-cordova platform-webview">
+		<script id="viz-tpl" type="text/x-handlebars-template" >
+			<li class="vizContainer" id="viz_{{id}}" prev="{{prev_viz}}" >
+				<div class="vizInfo" id="vizInfo_{{id}}">
+					<div class="vizTitle" >
+						{{title}}
+					</div>
+					<hr style="display: block; height: 1px;border: 0; border-top: 1px solid #d1d1d1; padding: 0;">
+					<div class="vizDetails">
+						<ul style="list-style-type: none;">
+							{{#if author_twitter}}
+							<li>
+								<i class="fa fa-user"></i>&nbsp;&nbsp; Created by @{{author_twitter}}
+							</li>
+							{{/if}}
+							{{#if data_source_url}}
+							<li>
+								<a href="{{data_source_url}}"><i class="fa fa-link"></i>&nbsp;&nbsp;{{data_source_name}}</a>
+							</li>
+							{{/if}}
+							<li><li class="fa fa-eye"></li>&nbsp;&nbsp;<span>{{views}}</span></li>
+							<li><li class="fa fa-heart"></li>&nbsp;&nbsp;<span class="likes_value">{{likes}}</span></li>
+						</ul>
+					</div>
+				</div>
+	
+				<div class="image_container " id="image_container_{{id}}" onclick="app.zoom('{{id}}')">
+					<img class="viz_image_{{id}}" id="viz_image" src="{{image_url}}" />
+				</div>
+			</li>
+
+		</script>
 
 		<div class="real" ontouchstart="app.touchStart(event);" ontouchmove="app.touchMove(event);">
-			<ul>
-				<li onclick="app.like()">
-					X
-				</li>
-				<li onclick="app.like()">
-					Y
-				</li>
-				<li onclick="app.like()">
-					Z
-				</li>
-				<li onclick="app.like()">
-					W
-				</li>
-				<li onclick="app.like()">
-					V
-				</li>
-				<li onclick="app.like()">
-					S
-				</li>
-
+			<ul class="viz-container">
+				
 			</ul>
 		</div>
 		<div class="navbar navshow">
 			<img src="img/logo.png">
-			<div class="title">
+			<div class="title" onclick="app.goTop()">
 				dadaviz
 			</div>
 			<i class="ion-android-search search-toggle" onclick="app.showSearch()"></i>
 
 		</div>
-
 		<div class="searchbar">
 			<i class="ion-android-search search-icon"></i>
 			<input />
 			<i class="ion-ios7-close-empty search-close" onclick="app.hideSearch()"></i>
+		</div>
+
+		<div class="zoom">
 		</div>
 
 		<div class="emotion share rolein" onclick="app.share()">
@@ -61,9 +78,11 @@
 		<div class="emotion like ">
 			<i class="ion-heart "></i>
 		</div>
-		
-		<div class="flight-controll">-</div>
-		
+
+		<div class="flight-controll">
+			
+		</div>
+
 	</body>
 
 	<script >
