@@ -14,12 +14,12 @@ var app = {
 		});
 
 		document.addEventListener('deviceready', this.onDeviceReady, false);
-		
 
 	},
 	onDeviceReady : function() {
 		//document.addEventListener("backbutton", app.back, true);
-		
+		document.addEventListener("backbutton", app.back, true);
+
 		localStorage.device_uuid = device.uuid;
 		service.login(localStorage.device_uuid, localStorage.device_uuid, function(d) {
 			console.log("logged in! " + d.user_id);
@@ -28,19 +28,65 @@ var app = {
 	},
 	back : function(e) {
 		if (app.mode === "zoom") {
-			$(".zoom").fadeOut();
-		} 
-		if(ionic){
-			alert("ionic");
+			app.zoomOut();
+			app.mode="";
+		}else{
+			navigator.app.exitApp();
 		}
-		
-		navigator.app.exitApp();
+
 	},
-	zoom : function(id) {
+	centerImage : function(id) {
+		
+
+	},
+	zoomOut:function(){
+		$(".zoom").fadeOut();
+		app.shareOut();
+		//app.backOut();
+	},
+	zoomIn : function(id) {
 		app.mode = "zoom";
 		$(".zoom").html($("#image_container_" + id).html());
 		// $("#image_container_"+id).
 		$(".zoom").fadeIn();
+		
+		var image = $(".zoom img").last();
+
+		setTimeout(function() {
+			var h = $(".zoom").height() - image.height();
+			var w = $(".zoom").width() - image.width();
+			image.css("margin-top","-"+h+"px");
+			image.css("margin-left",w+"px");
+			$(".flight-controll").html("< "+h+","+w+">");
+			if(h<w){
+				//image.css("max-width",$(".zoom").width());
+			}else{
+				//image.css("max-height",$(".zoom").height());
+			}
+		}, 200);
+
+		app.shareIn();
+		//app.backIn();
+
+	},
+	pointDistance : function(event) {
+		if (event.touches.length == 2) {
+			return Math.sqrt(Math.pow(event.touches[0].pageX - event.touches[1].pageX, 2) + Math.pow(event.touches[0].pageY - event.touches[1].pageY, 2));
+		} else {
+			return 1;
+		}
+	},
+	zoomStart:function(event){
+		if (event.touches.length == 2) {
+			app.zoom_pivot = app.pointDistance(event);
+		}
+	},
+	zoomMove:function(event){
+		var image = $(".zoom img").last();
+		if (event.touches.length == 2) {
+			var s = app.pointDistance(event) / app.zoom_pivot;
+			image.css("transform", "scale(" + s + "," + s + ")");
+		}
 	},
 	share : function(title, id) {
 		window.plugins.socialsharing.share(title, null, null, 'http://dadaviz.com/i/' + id);
@@ -86,6 +132,19 @@ var app = {
 			$(".searchbar").hide();
 			$(".searchbar").removeClass("searchhide");
 		}, 500);
+	},
+	backOut : function() {
+		$(".back").removeClass("rolein");
+		$(".back").addClass("roleout");
+		setTimeout(function() {
+			$(".back").hide();
+			$(".back").removeClass("roleout");
+		}, 500);
+
+	},
+	backIn : function() {
+		$(".back").show();
+		$(".back").addClass("rolein");
 	},
 
 	shareOut : function() {

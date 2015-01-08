@@ -18,6 +18,7 @@ var app = {
 	},
 	onDeviceReady : function() {
 		//document.addEventListener("backbutton", app.back, true);
+		document.addEventListener("backbutton", app.back, true);
 
 		localStorage.device_uuid = device.uuid;
 		service.login(localStorage.device_uuid, localStorage.device_uuid, function(d) {
@@ -28,60 +29,77 @@ var app = {
 	back : function(e) {
 		if (app.mode === "zoom") {
 			app.zoomOut();
+			app.mode = "";
+		} else {
+			navigator.app.exitApp();
 		}
 
 	},
 	centerImage : function(id) {
-		
 
 	},
-	zoomOut:function(){
+	zoomOut : function() {
 		$(".zoom").fadeOut();
 		app.shareOut();
-		app.backOut();
+
 	},
 	zoomIn : function(id) {
 		app.mode = "zoom";
 		$(".zoom").html($("#image_container_" + id).html());
 		// $("#image_container_"+id).
 		$(".zoom").fadeIn();
-		
 		var image = $(".zoom img").last();
-
+		//$(".flight-controll").html("<  " + $(".zoom").innerHeight() + ":::" + $(".zoom").height() + " >");
+		var h = $(".zoom").innerHeight();
+		var w = $(".zoom").innerWidth();
+		var rp = image.height() / image.width();
+		var rl = image.width() / image.height();
 		setTimeout(function() {
-			var h = $(".zoom").height() - image.height();
-			var w = $(".zoom").width() - image.width();
-			image.css("margin-top","-"+h+"px");
-			image.css("margin-left",w+"px");
-			$(".flight-controll").html("< "+h+","+w+">");
-			if(h<w){
-				//image.css("max-width",$(".zoom").width());
-			}else{
-				//image.css("max-height",$(".zoom").height());
+			if (image.height() > image.width()) {
+				//portrait -> adjust to width
+				//$(".flight-controll").html("< P  >");
+				image.animate({
+					width : w,
+					height : w * rp
+				}, 1000);
+				$(".zoom").scrollTop(w / 4);
+			} else {
+				//landscape -> adjust to height
+				//$(".flight-controll").html("< L >");
+				image.animate({
+					width : h * rl,
+					height : h
+				}, 1000);
+				$(".zoom").scrollLeft(h / 4);
 			}
-		}, 200);
-
+		}, 100);
 		app.shareIn();
-		app.backIn();
-
 	},
+	reservePointDistance : 1,
 	pointDistance : function(event) {
 		if (event.touches.length == 2) {
-			return Math.sqrt(Math.pow(event.touches[0].pageX - event.touches[1].pageX, 2) + Math.pow(event.touches[0].pageY - event.touches[1].pageY, 2));
+			app.reservePointDistance = Math.sqrt(Math.pow(event.touches[0].pageX - event.touches[1].pageX, 2) + Math.pow(event.touches[0].pageY - event.touches[1].pageY, 2));
+			return app.reservePointDistance;
 		} else {
-			return 1;
+			return app.reservePointDistance;
 		}
 	},
-	zoomStart:function(event){
+	zoomStart : function(event) {
 		if (event.touches.length == 2) {
 			app.zoom_pivot = app.pointDistance(event);
+			var image = $(".zoom img").last();
+			app.zoom_w = image.css("width").replace("px", "");
+			app.zoom_h = image.css("height").replace("px", "");
+			//$(".flight-controll").html("< "+app.zoom_h+">");
 		}
 	},
-	zoomMove:function(event){
+	zoomMove : function(event) {
+		//$(".flight-controll").html("<--->");
 		var image = $(".zoom img").last();
 		if (event.touches.length == 2) {
 			var s = app.pointDistance(event) / app.zoom_pivot;
-			image.css("transform", "scale(" + s + "," + s + ")");
+			image.css("width", app.zoom_w * s);
+			image.css("height", app.zoom_h * s);
 		}
 	},
 	share : function(title, id) {
@@ -116,10 +134,17 @@ var app = {
 	},
 	showSearch : function() {
 		$(".searchbar").show();
+		$("#searchTextInput").focus();
 		$(".searchbar").addClass("searchshow");
 		setTimeout(function() {
 			$(".searchbar").removeClass("searchshow");
+			
 		}, 500);
+		setTimeout(function(){
+			
+			
+			
+		},1000);
 	},
 	hideSearch : function() {
 		$(".searchbar").removeClass("searchshow");
@@ -156,7 +181,8 @@ var app = {
 		$(".share").show();
 		$(".share").addClass("rolein");
 	},
-	like : function() {
+	like : function(id) {
+		service.record_like(id);
 		$(".like").show();
 		$(".like").addClass("heartbeet");
 		setTimeout(function() {
@@ -164,12 +190,45 @@ var app = {
 			$(".like").removeClass("heartbeet");
 		}, 1000);
 	},
+	search : function(formObj) {
+		
+		$(".searchLoading").fadeIn();
+		service.quary(formObj, function(res) {
+			$(".searchLoading").fadeOut();
+			//$(".flight-controll").html( res.length);
+			app.buffer = [];
+			$('.viz-container').html("");
+			
+			if (res.length > 0) {
+				$("#searchTextInput").blur();
+				res.forEach(function(viz) {
+					//app.buffer.push(viz.id);
+					app.showViz(viz);
+				});
+			} else {
+				$(".searchNoResult").fadeIn();
+				setTimeout(function() {
+					$(".searchNoResult").fadeOut("slow");
+				}, 1000);
+			}
+			
+		});
+	},
 
 	loading : [],
 	buffer : [],
+	recordView : function() {
+		var vizCount = $(".viz-container li.vizContainer").length;
+		var h = $(".viz-container").height() / vizCount;
+		var vizIndex = $(".real").scrollTop() / h;
+
+		service.record_view(app.buffer[Math.round(vizIndex)]);
+		//$(".flight-controll").html( app.buffer[Math.round(vizIndex)] );
+	},
 	preload : function() {
+		app.recordView();
 		var scrolloc = $(".viz-container").height() - $(".real").scrollTop() - 5 * $(".real").height();
-		//$(".flight-controll").html(scrolloc);
+
 		var prev = $(".vizContainer").last().attr('prev');
 		if (scrolloc < 0 && app.loading.indexOf(prev) == -1) {
 			app.loading.push(prev);
@@ -189,6 +248,7 @@ var app = {
 		app.startTouch = event.touches[0].pageY;
 	},
 	touchMove : function(event) {
+
 		if (event.touches[0].pageY - app.startTouch < 0) {
 			app.hideNav();
 		} else {

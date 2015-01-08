@@ -1,5 +1,5 @@
 .zoom{
-	background-color: #FFFFF0;
+	background-color: #FFFFFF;
 	position: absolute;
 	top:0;
 	bottom: 0;
@@ -7,7 +7,7 @@
 	right:0;
 	overflow:auto;
 	display:none;
-	
+	padding:0;
 }
 
 .zoom img{
@@ -30,5 +30,27 @@
 	color: #ff665a;
 	box-shadow: 0px 2px 5px gray;
 	opacity: 0.4;
+	display:none;
+}
+
+.searchLoading{
+	position:absolute;
+	top:40%;
+	left:0;
+	width:100%;
+	font-size: 4em;
+	text-align: center;
+	color:#FF665A;
+	display:none;
+}
+
+.searchNoResult{
+	position:absolute;
+	top:40%;
+	left:0;
+	width:100%;
+	font-size: 2em;
+	text-align: center;
+	color:#FF665A;
 	display:none;
 }

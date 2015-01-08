@@ -43,7 +43,7 @@
 					</div>
 				</div>
 	
-				<div class="image_container " id="image_container_{{id}}" onclick="app.zoom('{{id}}')">
+				<div class="image_container " id="image_container_{{id}}" onclick="app.zoomIn('{{id}}')">
 					<img class="viz_image_{{id}}" id="viz_image" src="{{image_url}}" />
 				</div>
 			</li>
@@ -54,6 +54,7 @@
 			<ul class="viz-container">
 				
 			</ul>
+			<div class="loader"><i class="ion-ios7-reloading"></i></div>
 		</div>
 		<div class="navbar navshow">
 			<img src="img/logo.png">
@@ -69,7 +70,11 @@
 			<i class="ion-ios7-close-empty search-close" onclick="app.hideSearch()"></i>
 		</div>
 
-		<div class="zoom">
+		<div class="zoom" ontouchstart="app.zoomStart(event);" ontouchmove="app.zoomMove(event);">
+		</div>
+		
+		<div class="back" onclick="app.back()">
+			<i class="ion-android-close"></i>
 		</div>
 
 		<div class="emotion share rolein" onclick="app.share()">
