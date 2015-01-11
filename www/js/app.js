@@ -140,11 +140,8 @@ var app = {
 			$(".searchbar").removeClass("searchshow");
 			
 		}, 500);
-		setTimeout(function(){
-			
-			
-			
-		},1000);
+		app.presearch = null;
+		app.presearchBuffer = null;
 	},
 	hideSearch : function() {
 		$(".searchbar").removeClass("searchshow");
@@ -153,6 +150,12 @@ var app = {
 			$(".searchbar").hide();
 			$(".searchbar").removeClass("searchhide");
 		}, 500);
+		
+		if(app.presearch!=null){
+			$('.viz-container').html(app.presearch);
+			app.buffer = app.presearchBuffer;
+		}
+		
 	},
 	backOut : function() {
 		$(".back").removeClass("rolein");
@@ -193,6 +196,10 @@ var app = {
 	search : function(formObj) {
 		
 		$(".searchLoading").fadeIn();
+		app.presearch = $('.viz-container').html();
+		app.presearchBuffer = app.buffer;
+		
+		
 		service.quary(formObj, function(res) {
 			$(".searchLoading").fadeOut();
 			//$(".flight-controll").html( res.length);

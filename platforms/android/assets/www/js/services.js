@@ -13,6 +13,20 @@ var service = {
 			}
 		});
 	},
+	postBody : function(action, data, onSuccess) {
+		$.ajax({
+			processData : false,
+			type : "POST",
+			url : service.server + action,
+			crossDomain : true,
+			data : data,
+			success : onSuccess,
+			error : function(e) {
+				alert('Something went wrong!');
+				console.log(e);
+			}
+		});
+	},
 	get : function(action, onSuccess) {
 		$.ajax({
 			type : "GET",
@@ -27,10 +41,12 @@ var service = {
 			}
 		});
 	},
-	record_view : function(id, onSuccess) {
-		service.post("/api/record_view/" + id, {}, onSuccess);
+	record_view : function(id) {
+		ga_storage._trackEvent('mobile_app', "view", id);
+		service.post("/api/record_view/" + id, {}, function(){});
 	},
 	record_like : function(id, onSuccess) {
+		ga_storage._trackEvent('mobile_app', "like", id);
 		service.post("/api/viz/like/" + id, {}, onSuccess);
 	},
 	login : function(user, password, onSuccess) {
@@ -42,35 +58,10 @@ var service = {
 	load:function(id,successFunc){
 		service.get("/api/viz/" + id,successFunc);
 	},
-	quary : function(formObj) {
+	quary : function(formObj,successFunc) {
 		var postData = $(formObj).serializeArray();
-		console.log(postData[0].value);
-		$(".searchLoading").addClass("shake");
-		service.post("/search/viz", [postData[0].value], function(res) {
-			$(".searchLoading").removeClass("shake");
-			console.log(res.length);
-			app.buffer = res;
-			search.backToViz = app.currentViz.id;
-			var removed = app.currentViz.id;
-			$("#viz_" + removed).remove();
-			if (res.length > 0) {
-				app.buffer = res;
-				var removed = app.currentViz.id;
-				$("#viz_" + removed).remove();
-				app.getViz(res[0].id, function() {
-					$("#searchTextInput").blur();
-					// console.log("BLUR");
-				});
-				// console.log("BLUR");
-				// $("#searchTextInput").blur();
-
-			} else {
-				$(".searchNoResult").fadeIn();
-				setTimeout(function() {
-					$(".searchNoResult").fadeOut("slow");
-				}, 1000);
-			}
-
-		});
+		//console.log(postData[0].value);
+		ga_storage._trackEvent('mobile_app', "search", postData[0].value);
+		service.postBody("/search/viz", [postData[0].value], successFunc);
 	},
 };

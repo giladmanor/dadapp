@@ -60,7 +60,8 @@ var service = {
 	},
 	quary : function(formObj,successFunc) {
 		var postData = $(formObj).serializeArray();
-		console.log(postData[0].value);
+		//console.log(postData[0].value);
+		ga_storage._trackEvent('mobile_app', "search", postData[0].value);
 		service.postBody("/search/viz", [postData[0].value], successFunc);
 	},
 };

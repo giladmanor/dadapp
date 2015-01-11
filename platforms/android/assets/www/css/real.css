@@ -30,6 +30,21 @@ div.real li.vizContainer {
 	color: #989898;
 }
 
+.likable{
+	padding-right:0.42em;
+	width:100%;
+	/*color: #FF665A;*/
+}
+
+.likable div{
+	float:right;
+	/*margin-top: -4em;*/
+	font-size: 1em;
+}
+.likable i{
+	font-size: 1.5em;
+}
+
 .vizDetails a {
 	text-decoration: none;
 	color: #989898;

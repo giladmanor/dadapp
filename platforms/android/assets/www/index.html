@@ -27,6 +27,7 @@
 					<hr style="display: block; height: 1px;border: 0; border-top: 1px solid #d1d1d1; padding: 0;">
 					<div class="vizDetails">
 						<ul style="list-style-type: none;">
+							<li class="likable" onclick="app.like({{id}})"><div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">{{likes}}</span></div></li>
 							{{#if author_twitter}}
 							<li>
 								<i class="fa fa-user"></i>&nbsp;&nbsp; Created by @{{author_twitter}}
@@ -38,7 +39,8 @@
 							</li>
 							{{/if}}
 							<li><li class="fa fa-eye"></li>&nbsp;&nbsp;<span>{{views}}</span></li>
-							<li><li class="fa fa-heart"></li>&nbsp;&nbsp;<span class="likes_value">{{likes}}</span></li>
+							
+							
 						</ul>
 					</div>
 				</div>
@@ -66,8 +68,18 @@
 		</div>
 		<div class="searchbar">
 			<i class="ion-android-search search-icon"></i>
-			<input />
+			<form onsubmit="app.search(this);return false;">
+				<input id="searchTextInput" type="text" name="text"/>
+			</form>
 			<i class="ion-ios7-close-empty search-close" onclick="app.hideSearch()"></i>
+		</div>
+		
+		<div class="searchLoading">
+			<i class="ion-ios7-reloading"></i>
+		</div>
+		
+		<div class="searchNoResult">
+			Meh, No Results <i class="fa fa-frown-o"></i>
 		</div>
 
 		<div class="zoom" ontouchstart="app.zoomStart(event);" ontouchmove="app.zoomMove(event);">
@@ -89,8 +101,11 @@
 		</div>
 
 	</body>
-
-	<script >
+	<script src="js/ga.js"></script>
+	<script>
+		ga_storage._setAccount('UA-51811681-1');
+		ga_storage._trackEvent('mobile_app', "open app");
+	
 		app.init();
 	</script>
 
