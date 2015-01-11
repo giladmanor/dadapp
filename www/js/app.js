@@ -4,6 +4,7 @@ var app = {
 		app.vizTpl = Handlebars.compile($("#viz-tpl").html());
 		setTimeout(function() {
 			console.log("!");
+			//alert("...");
 
 		}, 3000);
 
@@ -21,6 +22,7 @@ var app = {
 		document.addEventListener("backbutton", app.back, true);
 
 		localStorage.device_uuid = device.uuid;
+		
 		service.login(localStorage.device_uuid, localStorage.device_uuid, function(d) {
 			console.log("logged in! " + d.user_id);
 		});
@@ -41,6 +43,7 @@ var app = {
 	zoomOut : function() {
 		$(".zoom").fadeOut();
 		app.shareOut();
+		app.backOut();
 
 	},
 	zoomIn : function(id) {
@@ -74,6 +77,7 @@ var app = {
 			}
 		}, 100);
 		app.shareIn();
+		app.backIn();
 	},
 	reservePointDistance : 1,
 	pointDistance : function(event) {

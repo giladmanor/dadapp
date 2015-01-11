@@ -68,20 +68,20 @@ div.navbar{
 	padding: 0.6em;
 	color: white;
 	box-shadow: 0px 2px 5px gray;
-	height:3.5em;
+	height:4em;
 }
 
 div.navbar img{
 	position:absolute;
 	left:0.7em;
-	top:0.65em;
+	top:1.65em;
 	max-height:2em;
 }
 
 div.navbar .title{
 	position:absolute;
 	left:1.7em;
-	top:0.8em;
+	top:1.4em;
 	font-size: 1.4em;
 	width: 5em;
 }
@@ -89,14 +89,14 @@ div.navbar .title{
 .search-toggle{
 	position:absolute;
 	right:0.2em;
-	top:0.4em;
+	top:0.8em;
 	font-size: 2em;
 }
 
 .search-close{
 	position:absolute;
-	right:0.4em;
-	top:0.05em;
+	right:0.3em;
+	top:.25em;
 	font-size: 3.5em;
 }
 
@@ -107,22 +107,23 @@ div.navbar .title{
 	width: 100%;
 	padding: 0.6em;
 	color: white;
-	height:3.5em;
+	height:3.6em;
 }
 
 .searchbar .search-icon{
 	position:absolute;
 	left:0.2em;
-	top:0.4em;
+	top:0.8em;
 	font-size: 2em;
 }
 
 .searchbar input {
 	color: white;
 	position: absolute;
-	font-size: 2em;
-	top: 0.3em;
-	left: 1.5em;
+	font-size: 1.7em;
+	top: 0.83em;
+	left: 1.8em;
+	padding:0.1em;
 	width: 70%;
 	background-color: #ff665a;
 	border: none;

@@ -6,6 +6,7 @@ div.real {
 	right: 0;
 	background-color: #FFFFFF;
 	overflow-y: auto;
+	-webkit-overflow-scrolling:touch;
 }
 
 div.real li.vizContainer {
