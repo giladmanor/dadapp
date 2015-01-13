@@ -229,17 +229,20 @@ var app = {
 	loading : [],
 	buffer : [],
 	recordView : function() {
-		var vizCount = $(".viz-container li.vizContainer").length;
+		var vizCount = app.buffer.length;//$(".viz-container li.vizContainer").length;
 		var h = $(".viz-container").height() / vizCount;
 		var vizIndex = $(".real").scrollTop() / h;
+		var id = app.buffer[Math.round(vizIndex)];
+		setTimeout(function(){
+			service.record_view(id);
+		
+		},1000);
 
-		service.record_view(app.buffer[Math.round(vizIndex)]);
 		//$(".flight-controll").html( app.buffer[Math.round(vizIndex)] );
 	},
 	preload : function() {
 		app.recordView();
 		var scrolloc = $(".viz-container").height() - $(".real").scrollTop() - 5 * $(".real").height();
-
 		var prev = $(".vizContainer").last().attr('prev');
 		if (scrolloc < 0 && app.loading.indexOf(prev) == -1) {
 			app.loading.push(prev);
