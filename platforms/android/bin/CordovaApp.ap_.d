@@ -62,6 +62,8 @@ C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\Roboto-MediumItal
 C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\Roboto-Regular.ttf \
 C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\Roboto-Thin.ttf \
 C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\Roboto-ThinItalic.ttf \
+C:\Users\user\github\dadapp\platforms\android\assets\www\img\icon.png \
+C:\Users\user\github\dadapp\platforms\android\assets\www\img\icon_521.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\logo.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www\js\app.js \
 C:\Users\user\github\dadapp\platforms\android\assets\www\js\ga.js \

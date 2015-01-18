@@ -2,6 +2,7 @@ var app = {
 	init : function() {
 		console.log(".");
 		app.vizTpl = Handlebars.compile($("#viz-tpl").html());
+		
 		setTimeout(function() {
 			console.log("!");
 
@@ -46,6 +47,8 @@ var app = {
 	zoomIn : function(id) {
 		app.mode = "zoom";
 		$(".zoom").html($("#image_container_" + id).html());
+		//app.shareTitle = $(".zoom .vizTitle").html();
+		app.shareId = id;
 		// $("#image_container_"+id).
 		$(".zoom").fadeIn();
 		var image = $(".zoom img").last();
@@ -102,7 +105,10 @@ var app = {
 			image.css("height", app.zoom_h * s);
 		}
 	},
-	share : function(title, id) {
+	share : function() {
+		var title = "";
+		var id = app.shareId;
+		
 		window.plugins.socialsharing.share(title, null, null, 'http://dadaviz.com/i/' + id);
 	},
 	urlTrim : function(str) {

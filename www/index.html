@@ -19,12 +19,12 @@
 	</head>
 	<body >
 		<script id="viz-tpl" type="text/x-handlebars-template" >
-			<li class="vizContainer" id="viz_{{id}}" prev="{{prev_viz}}" >
+			<li class="vizContainer" id="viz_{{id}}" prev="{{prev_viz}}" style="background-color: {{background_color}}">
 				<div class="vizInfo" id="vizInfo_{{id}}">
 					<div class="vizTitle" >
 						{{title}}
 					</div>
-					<hr style="display: block; height: 1px;border: 0; border-top: 1px solid #d1d1d1; padding: 0;">
+					<!-- <hr style="display: block; height: 1px;border: 0; border-top: 1px solid #d1d1d1; padding: 0;"> -->
 					<div class="vizDetails">
 						<ul style="list-style-type: none;">
 							<li class="likable" onclick="app.like({{id}})"><div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">{{likes}}</span></div></li>

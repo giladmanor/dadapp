@@ -6,51 +6,66 @@ div.real {
 	right: 0;
 	background-color: #FFFFFF;
 	overflow-y: auto;
+	padding-top: 4em;
 }
 
 div.real li.vizContainer {
-	margin: 0.2em;
-	margin-top: 4em;
+	/*margin: 0.2em;*/
+	padding-bottom: 2em;
 	background-color: #FFFFFF;
 	height: 100%;
 }
 
 .vizTitle {
-	padding-left: 0.2em;
+	/*padding-left: 0.2em;*/
 	padding-top: 0;
-	padding-right: 0.2em;
+	/*padding-right: 0.2em;*/
+	padding:0.5em;
 	font-size: 1.2em;
 	color: #666666;
+	background-color: #fafafa;
 }
 
 .vizDetails {
-	margin-left: .42em;
+	margin-left: 0;
+	padding-left:.7em;
 	padding-right: 0;
 	font-size: 0.8em;
-	color: #989898;
+	/*color: #989898;*/
+	color: #666666;
+	background-color: #fafafa;
 }
 
 .likable{
-	padding-right:0.42em;
+	padding-right:0.6em;
 	width:100%;
-	/*color: #FF665A;*/
+	color: #FF665A;
+	/**/
 }
 
 .likable div{
 	float:right;
 	/*margin-top: -4em;*/
 	font-size: 1em;
+	margin-top:0.5em;
+	
 }
 .likable i{
-	font-size: 1.5em;
+	font-size: 1.4em;
+	/*border: 0.1em solid #FF665A;*/
+	border-radius:40%;
+	padding:0.2em;
+	/*padding-top:0.35em;*/
 }
 
 .vizDetails a {
 	text-decoration: none;
 	color: #989898;
+	
 }
 .image_container {
 	text-align: center;
+	padding:0.2em;
 }
 
 .image_container img {
