@@ -27,7 +27,11 @@
 					<!-- <hr style="display: block; height: 1px;border: 0; border-top: 1px solid #d1d1d1; padding: 0;"> -->
 					<div class="vizDetails">
 						<ul style="list-style-type: none;">
-							<li class="likable" onclick="app.like({{id}})"><div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">{{likes}}</span></div></li>
+							{{#if is_liked}}
+							<li class="likable " ><div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">{{likes}}</span></div></li>
+							{{else}}
+							<li class="likable likable_{{id}}" ><div onclick="app.like({{id}})"><i class="fa fa-heart-o"></i>&nbsp<span class="likes_value">{{likes}}</span></div></li>
+							{{/if}}
 							{{#if author_twitter}}
 							<li>
 								<i class="fa fa-user"></i>&nbsp;&nbsp; Created by @{{author_twitter}}
@@ -93,7 +97,7 @@
 			<i class="ion-android-share"></i>
 		</div>
 		<div class="emotion like ">
-			<i class="ion-heart "></i>
+			<i class="fa fa-heart"></i>
 		</div>
 
 		<div class="flight-controll">

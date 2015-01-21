@@ -38,6 +38,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\index.html \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\popup.html \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\templates \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\emotion.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\font-awesome.min.css \
@@ -62,6 +63,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\Roboto-
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\Roboto-Regular.ttf \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\Roboto-Thin.ttf \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\Roboto-ThinItalic.ttf \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\GooglePlay_appStore.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\icon.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\icon_521.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\logo.png \
@@ -139,9 +141,12 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\scs
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\scss\ionicons\_ionicons-font.scss \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\scss\ionicons\_ionicons-icons.scss \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\scss\ionicons\_ionicons-variables.scss \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\org.apache.cordova.device \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent\www \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent\www\webintent.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard\www \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard\www\keyboard.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing\www \

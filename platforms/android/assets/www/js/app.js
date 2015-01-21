@@ -1,8 +1,12 @@
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 var app = {
 	init : function() {
 		console.log(".");
 		app.vizTpl = Handlebars.compile($("#viz-tpl").html());
-		
+
 		setTimeout(function() {
 			console.log("!");
 
@@ -24,6 +28,25 @@ var app = {
 		localStorage.device_uuid = device.uuid;
 		service.login(localStorage.device_uuid, localStorage.device_uuid, function(d) {
 			console.log("logged in! " + d.user_id);
+		});
+
+		window.plugins.webintent.getUri(function(url) {
+			if (url !== "" && url != null) {
+				url = url.toLowerCase();
+				id = "top";
+				if (url.indexOf("dadaviz.com/i/") > -1) {
+					id = url.split("dadaviz.com/i/")[1];
+
+				}
+				//alert(id);
+				if (id != "undefined") {
+					service.record_open_url(id);
+					service.load(id, function(viz) {
+						app.showViz(viz, true);
+					});
+				}
+
+			}
 		});
 
 	},
@@ -108,7 +131,7 @@ var app = {
 	share : function() {
 		var title = "";
 		var id = app.shareId;
-		
+
 		window.plugins.socialsharing.share(title, null, null, 'http://dadaviz.com/i/' + id);
 	},
 	urlTrim : function(str) {
@@ -120,12 +143,18 @@ var app = {
 		}
 
 	},
-	showViz : function(viz) {
+	showViz : function(viz, first) {
 		if (app.buffer.indexOf(viz.id) == -1) {
 			app.buffer.push(viz.id);
 			app.loading.slice(app.loading.indexOf(viz.id), 1);
 			viz.data_source_name = app.urlTrim(viz.data_source_url);
-			$('.viz-container').append(app.vizTpl(viz));
+			viz.views = numberWithCommas(viz.views);
+			if (first) {
+				$('.viz-container').prepend(app.vizTpl(viz));
+			} else {
+				$('.viz-container').append(app.vizTpl(viz));
+			}
+
 		}
 	},
 	showNav : function() {
@@ -144,7 +173,7 @@ var app = {
 		$(".searchbar").addClass("searchshow");
 		setTimeout(function() {
 			$(".searchbar").removeClass("searchshow");
-			
+
 		}, 500);
 		app.presearch = null;
 		app.presearchBuffer = null;
@@ -156,12 +185,12 @@ var app = {
 			$(".searchbar").hide();
 			$(".searchbar").removeClass("searchhide");
 		}, 500);
-		
-		if(app.presearch!=null){
+
+		if (app.presearch != null) {
 			$('.viz-container').html(app.presearch);
 			app.buffer = app.presearchBuffer;
 		}
-		
+
 	},
 	backOut : function() {
 		$(".back").removeClass("rolein");
@@ -191,7 +220,9 @@ var app = {
 		$(".share").addClass("rolein");
 	},
 	like : function(id) {
-		service.record_like(id);
+		service.record_like(id, function(d){
+			$(".likable_"+d.id).html('<div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">'+ d.likes+'</span></div>');
+		});
 		$(".like").show();
 		$(".like").addClass("heartbeet");
 		setTimeout(function() {
@@ -200,18 +231,17 @@ var app = {
 		}, 1000);
 	},
 	search : function(formObj) {
-		
+
 		$(".searchLoading").fadeIn();
 		app.presearch = $('.viz-container').html();
 		app.presearchBuffer = app.buffer;
-		
-		
+
 		service.quary(formObj, function(res) {
 			$(".searchLoading").fadeOut();
 			//$(".flight-controll").html( res.length);
 			app.buffer = [];
 			$('.viz-container').html("");
-			
+
 			if (res.length > 0) {
 				$("#searchTextInput").blur();
 				res.forEach(function(viz) {
@@ -224,7 +254,7 @@ var app = {
 					$(".searchNoResult").fadeOut("slow");
 				}, 1000);
 			}
-			
+
 		});
 	},
 

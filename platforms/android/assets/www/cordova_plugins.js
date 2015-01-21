@@ -20,6 +20,13 @@ module.exports = [
         "clobbers": [
             "window.plugins.socialsharing"
         ]
+    },
+    {
+        "file": "plugins/com.borismus.webintent/www/webintent.js",
+        "id": "com.borismus.webintent.WebIntent",
+        "clobbers": [
+            "WebIntent"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -28,7 +35,8 @@ module.exports.metadata =
     "com.ionic.keyboard": "1.0.3",
     "org.apache.cordova.console": "0.2.12",
     "org.apache.cordova.device": "0.2.13",
-    "nl.x-services.plugins.socialsharing": "4.3.12"
+    "nl.x-services.plugins.socialsharing": "4.3.12",
+    "com.borismus.webintent": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

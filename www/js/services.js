@@ -41,6 +41,10 @@ var service = {
 			}
 		});
 	},
+	record_open_url : function(id) {
+		ga_storage._trackEvent('mobile_app', "open_url", id);
+		service.post("/api/record_view/" + id, {}, function(){});
+	},
 	record_view : function(id) {
 		ga_storage._trackEvent('mobile_app', "view", id);
 		service.post("/api/record_view/" + id, {}, function(){});

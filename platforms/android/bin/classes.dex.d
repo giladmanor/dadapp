@@ -1,4 +1,5 @@
 C:\Users\user\github\dadapp\platforms\android\bin\classes.dex : \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\borismus\webintent\WebIntent.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\BuildConfig.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\CordovaApp.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$attr.class \
