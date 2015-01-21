@@ -264,8 +264,13 @@ var app = {
 		var vizCount = $(".viz-container li.vizContainer").length;
 		var h = $(".viz-container").height() / vizCount;
 		var vizIndex = $(".real").scrollTop() / h;
+		var id = app.buffer[Math.round(vizIndex)];
+		if(app.lastViewed!=id){
+			app.lastViewed=id;
+			service.record_view(id);
+		}
 
-		service.record_view(app.buffer[Math.round(vizIndex)]);
+		
 		//$(".flight-controll").html( app.buffer[Math.round(vizIndex)] );
 	},
 	preload : function() {
