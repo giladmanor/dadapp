@@ -8,7 +8,7 @@ var service = {
 			data : data,
 			success : onSuccess,
 			error : function(e) {
-				alert('Something went wrong!');
+				//alert('Something went wrong! ' + action);
 				console.log(e);
 			}
 		});
@@ -22,7 +22,7 @@ var service = {
 			data : data,
 			success : onSuccess,
 			error : function(e) {
-				alert('Something went wrong!');
+				//alert('Something went wrong! ' + action);
 				console.log(e);
 			}
 		});
@@ -36,7 +36,7 @@ var service = {
 			dataType : 'json',
 			success : onSuccess,
 			error : function(e) {
-				alert('Something went wrong!');
+				//alert('Something went wrong! ' + action);
 				console.log(e);
 			}
 		});

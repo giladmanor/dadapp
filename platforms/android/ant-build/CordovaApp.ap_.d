@@ -13,6 +13,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\res\drawable-port-mdpi\s
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\res\drawable-port-xhdpi\screen.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\res\drawable-xhdpi\icon.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\res\values\strings.xml \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\res\values\version.xml \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\res\xml\config.xml \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\res\drawable\icon.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\res\drawable-hdpi\icon.png \
@@ -67,6 +68,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\GooglePla
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\icon.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\icon_521.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\img\logo.png \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\admober.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\app.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\ga.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\handlebars-v2.0.0.js \
@@ -83,11 +85,14 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\fon
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\fonts\ionicons.ttf \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\fonts\ionicons.woff \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.google.cordova.admob \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\org.apache.cordova.device \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent\www \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent\www\webintent.js \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.google.cordova.admob\www \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.google.cordova.admob\www\AdMob.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard\www \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard\www\keyboard.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing\www \

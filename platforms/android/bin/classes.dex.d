@@ -4,6 +4,7 @@ C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\BuildC
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\CordovaApp.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$attr.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$drawable.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$integer.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$string.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R$xml.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\dadaviz\app\R.class \
@@ -12,6 +13,13 @@ C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionic\keyboard\Ion
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionic\keyboard\IonicKeyboard$3.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionic\keyboard\IonicKeyboard.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\com\ionicframework\dadapp122553\CordovaApp.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\rjfun\cordova\admob\AdMobMediation.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\rjfun\cordova\admob\AdMobPlugin$1.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\rjfun\cordova\admob\AdMobPlugin$BannerListener.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\rjfun\cordova\admob\AdMobPlugin$InterstitialListener.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\rjfun\cordova\admob\AdMobPlugin.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\rjfun\cordova\ext\CordovaPluginExt.class \
+C:\Users\user\github\dadapp\platforms\android\bin\classes\com\rjfun\cordova\ext\PluginAdapterDelegate.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$1.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$2$1$1.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing$2$1.class \
@@ -21,3 +29,5 @@ C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\S
 C:\Users\user\github\dadapp\platforms\android\bin\classes\nl\xservices\plugins\SocialSharing.class \
 C:\Users\user\github\dadapp\platforms\android\bin\classes\org\apache\cordova\device\Device.class \
 C:\Users\user\github\dadapp\platforms\android\bin\dexedLibs\classes-ebc722da5d8a00573026267e4be28471.jar \
+C:\Users\user\github\dadapp\platforms\android\bin\dexedLibs\google-play-services-5c8bd093431a21ba6e2a85dd2a080746.jar \
+C:\Users\user\github\dadapp\platforms\android\bin\dexedLibs\cordova-generic-ad-819c919136c3e8c627727482eea90c68.jar \
