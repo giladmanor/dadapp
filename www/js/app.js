@@ -49,6 +49,48 @@ var app = {
 			}
 		});
 
+		var pushNotification = window.plugins.pushNotification;
+		pushNotification.register(function(result) {
+			//alert('pushNotification Success! Result = ' + result);
+		}, function(error) {
+			//alert(error);
+		}, {
+			"senderID" : "321817843821",
+			"ecb" : "app.onNotificationGCM"
+		});
+
+	},
+	onNotificationGCM : function(e) {
+		switch( e.event ) {
+		case 'registered':
+			if (e.regid.length > 0) {
+				console.log("Regid " + e.regid);
+				//alert('registration id = ' + e.regid);
+			}
+			//$(".flight-controll").show();
+			//$(".flight-controll").html("<textarea>"+e.regid+"</textarea>");
+			break;
+
+		case 'message':
+			// this is the actual push notification. its format depends on the data model from the push server
+			var id = e.payload.viz_id;
+			// Object.keys(e.payload).forEach(function(i){
+			// say += " "+i;
+			// });
+			service.record_open_url(id);
+			service.load(id, function(viz) {
+				app.showViz(viz, true);
+			});
+			break;
+
+		case 'error':
+			alert('GCM error = ' + e.msg);
+			break;
+
+		default:
+			alert('An unknown GCM event has occurred');
+			break;
+		}
 	},
 	back : function(e) {
 		if (app.mode === "zoom") {
@@ -220,8 +262,8 @@ var app = {
 		$(".share").addClass("rolein");
 	},
 	like : function(id) {
-		service.record_like(id, function(d){
-			$(".likable_"+d.id).html('<div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">'+ d.likes+'</span></div>');
+		service.record_like(id, function(d) {
+			$(".likable_" + d.id).html('<div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">' + d.likes + '</span></div>');
 		});
 		$(".like").show();
 		$(".like").addClass("heartbeet");
@@ -265,12 +307,11 @@ var app = {
 		var h = $(".viz-container").height() / vizCount;
 		var vizIndex = $(".real").scrollTop() / h;
 		var id = app.buffer[Math.round(vizIndex)];
-		if(app.lastViewed!=id){
-			app.lastViewed=id;
+		if (app.lastViewed != id) {
+			app.lastViewed = id;
 			service.record_view(id);
 		}
 
-		
 		//$(".flight-controll").html( app.buffer[Math.round(vizIndex)] );
 	},
 	preload : function() {

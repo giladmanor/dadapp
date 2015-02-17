@@ -5,7 +5,7 @@ var admober = {
 		var defaultOptions = {
 			// bannerId: admobid.banner,
 			// interstitialId: admobid.interstitial,
-			// adSize: 'SMART_BANNER',
+			adSize: 'SMART_BANNER',
 			// width: integer, // valid when set adSize 'CUSTOM'
 			// height: integer, // valid when set adSize 'CUSTOM'
 			position : AdMob.AD_POSITION.BOTTOM_CENTER,
@@ -20,11 +20,11 @@ var admober = {
 		admober.createSelectedBanner();
 	},
 	createSelectedBanner:function() {
-    	var overlap = true;
+    	var overlap = false;
         var offsetTopBar = true;
         
         
-        AdMob.createBanner( {adId:admober.id, overlap:overlap, offsetTopBar:offsetTopBar, adSize: 'SMART_BANNER'} );
+        AdMob.createBanner( {adId:admober.id, overlap:overlap, offsetTopBar:offsetTopBar} );
     }
 };
 

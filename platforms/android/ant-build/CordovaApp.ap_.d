@@ -30,6 +30,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\res\drawable-p
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\ant-build\res\drawable-xhdpi\icon.png \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\_where-is-www.txt \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\beep.wav \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\cordova.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\cordova_plugins.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css \
@@ -40,6 +41,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\popup.html \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\PushNotification.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\templates \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\emotion.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\font-awesome.min.css \
@@ -87,6 +89,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\fon
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.google.cordova.admob \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\org.apache.cordova.device \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent\www \
@@ -95,6 +98,8 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.g
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.google.cordova.admob\www\AdMob.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard\www \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard\www\keyboard.js \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin\www \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin\www\PushNotification.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing\www \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\nl.x-services.plugins.socialsharing\www\SocialSharing.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\org.apache.cordova.device\www \

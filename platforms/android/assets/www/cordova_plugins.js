@@ -34,6 +34,13 @@ module.exports = [
         "clobbers": [
             "window.AdMob"
         ]
+    },
+    {
+        "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
+        "id": "com.phonegap.plugins.PushPlugin.PushNotification",
+        "clobbers": [
+            "PushNotification"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -45,6 +52,7 @@ module.exports.metadata =
     "nl.x-services.plugins.socialsharing": "4.3.12",
     "com.borismus.webintent": "1.0.0",
     "com.google.cordova.admob": "2.7.0",
+    "com.phonegap.plugins.PushPlugin": "2.4.0",
     "com.rjfun.cordova.extension": "1.0.6",
     "com.google.playservices": "19.0.0"
 }
