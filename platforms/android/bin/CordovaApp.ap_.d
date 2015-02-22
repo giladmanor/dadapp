@@ -30,6 +30,7 @@ C:\Users\user\github\dadapp\platforms\android\bin\res\drawable-port-xhdpi\screen
 C:\Users\user\github\dadapp\platforms\android\bin\res\drawable-xhdpi\icon.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www \
 C:\Users\user\github\dadapp\platforms\android\assets\_where-is-www.txt \
+C:\Users\user\github\dadapp\platforms\android\assets\www\beep.wav \
 C:\Users\user\github\dadapp\platforms\android\assets\www\cordova.js \
 C:\Users\user\github\dadapp\platforms\android\assets\www\cordova_plugins.js \
 C:\Users\user\github\dadapp\platforms\android\assets\www\css \
@@ -40,6 +41,7 @@ C:\Users\user\github\dadapp\platforms\android\assets\www\js \
 C:\Users\user\github\dadapp\platforms\android\assets\www\lib \
 C:\Users\user\github\dadapp\platforms\android\assets\www\plugins \
 C:\Users\user\github\dadapp\platforms\android\assets\www\popup.html \
+C:\Users\user\github\dadapp\platforms\android\assets\www\PushNotification.js \
 C:\Users\user\github\dadapp\platforms\android\assets\www\templates \
 C:\Users\user\github\dadapp\platforms\android\assets\www\css\emotion.css \
 C:\Users\user\github\dadapp\platforms\android\assets\www\css\font-awesome.min.css \

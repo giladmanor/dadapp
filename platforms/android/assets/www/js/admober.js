@@ -1,11 +1,22 @@
 var admober = {
 	id : "ca-app-pub-1355216097380523/8977928296",
+	pause : 0,
 	show : function() {
-		
+
+		if (admober.pause > 0) {
+
+			setTimeout(function() {
+				admober.show();
+			}, admober.pause);
+
+			admober.pause = 0;
+			return;
+		}
+
 		var defaultOptions = {
 			// bannerId: admobid.banner,
 			// interstitialId: admobid.interstitial,
-			adSize: 'SMART_BANNER',
+			adSize : 'SMART_BANNER',
 			// width: integer, // valid when set adSize 'CUSTOM'
 			// height: integer, // valid when set adSize 'CUSTOM'
 			position : AdMob.AD_POSITION.BOTTOM_CENTER,
@@ -19,19 +30,18 @@ var admober = {
 		AdMob.setOptions(defaultOptions);
 		admober.createSelectedBanner();
 	},
-	createSelectedBanner:function() {
-    	var overlap = false;
-        var offsetTopBar = true;
-        
-        
-        AdMob.createBanner( {adId:admober.id, overlap:overlap, offsetTopBar:offsetTopBar} );
-    }
+	createSelectedBanner : function() {
+		var overlap = false;
+		var offsetTopBar = true;
+		AdMob.createBanner({
+			adId : admober.id,
+			overlap : overlap,
+			offsetTopBar : offsetTopBar
+		});
+	}
 };
 
-
-setTimeout(function(){
-	
+setTimeout(function() {
 	admober.show();
-	
-},5000);
+}, 7000);
 

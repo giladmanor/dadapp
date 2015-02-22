@@ -41,6 +41,10 @@ var service = {
 			}
 		});
 	},
+	record_action : function(action,id) {
+		ga_storage._trackEvent('mobile_app', action, id);
+		//service.post("/api/record_view/" + id, {}, function(){});
+	},
 	record_open_url : function(id) {
 		ga_storage._trackEvent('mobile_app', "open_url", id);
 		service.post("/api/record_view/" + id, {}, function(){});
@@ -57,6 +61,15 @@ var service = {
 		service.post("/api/silantlogin", {
 			username : "mobile_" + user,
 			password : password
+		}, onSuccess);
+	},
+	register_notifications : function(android_id, onSuccess) {
+		service.post("/api/register_notifications", {
+			android_id : android_id,
+			digest_info:{
+				app_notification_version:0,
+				user_mail:"",
+			}
 		}, onSuccess);
 	},
 	load:function(id,successFunc){

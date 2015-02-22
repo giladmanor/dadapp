@@ -48,6 +48,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\font-awes
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\navbar.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\real.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\style.css \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\toast.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\viz.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\fontawesome-webfont.eot \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\fontawesome-webfont.svg \

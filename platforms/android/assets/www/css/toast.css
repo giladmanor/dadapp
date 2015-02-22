@@ -1,0 +1,47 @@
+@-webkit-keyframes animate_toast_in {
+0% { -webkit-transform: translate(0, 10em); }
+80% { -webkit-transform: translate(0, 1em); }
+100% { -webkit-transform: translate(0, 0); }
+}
+
+@-webkit-keyframes animate_toast_out {
+0% { -webkit-transform: translate(0, 0); }
+100% { -webkit-transform: translate(0, 10em); }
+
+}
+
+.toast_in {
+	-webkit-animation-name: animate_toast_in;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	display: block;
+}
+
+.toast_out {
+	-webkit-animation-name: animate_toast_out;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+}
+
+.toast{
+	display:none;
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color: #666666;
+	color:#FAFAFA;
+	padding: 1em;
+}
+.toast h3{
+	color:#FAFAFA;
+}
+
+.toast-title i{
+	float: right;
+}

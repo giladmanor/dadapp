@@ -7,11 +7,6 @@ var app = {
 		console.log(".");
 		app.vizTpl = Handlebars.compile($("#viz-tpl").html());
 
-		setTimeout(function() {
-			console.log("!");
-
-		}, 3000);
-
 		service.load("top", function(viz) {
 			app.showViz(viz);
 			//app.zoom(viz.id);
@@ -65,32 +60,66 @@ var app = {
 		case 'registered':
 			if (e.regid.length > 0) {
 				console.log("Regid " + e.regid);
-				//alert('registration id = ' + e.regid);
+				service.register_notifications(e.regid, function(d) {
+					//alert("register success");
+				});
 			}
-			//$(".flight-controll").show();
-			//$(".flight-controll").html("<textarea>"+e.regid+"</textarea>");
+			// var say = "";
+			// Object.keys(e).forEach(function(i) {
+				// say += " " + i;
+			// });
+			// alert(say);
+
 			break;
 
 		case 'message':
-			// this is the actual push notification. its format depends on the data model from the push server
+			
 			var id = e.payload.viz_id;
-			// Object.keys(e.payload).forEach(function(i){
-			// say += " "+i;
-			// });
-			service.record_open_url(id);
 			service.load(id, function(viz) {
 				app.showViz(viz, true);
 			});
+			
+			app.pushMessageRenderer(e.payload);
+			
+			service.record_open_url(id);
+			service.record_action("open_from_GCM", id);
 			break;
 
 		case 'error':
-			alert('GCM error = ' + e.msg);
+			//alert('GCM error = ' + e.msg);
 			break;
 
 		default:
-			alert('An unknown GCM event has occurred');
+			//alert('An unknown GCM event has occurred');
 			break;
 		}
+	},
+	pushMessageRenderer:function(data){
+		switch( data.type ) {
+		case 'toast':
+			admober.pause = data.suspend_admob || 0;
+			setTimeout(function(){
+				$(".toast").show();
+				$(".toast").addClass("toast_in");
+			},4000);
+			
+			
+			
+			break;
+
+		
+		default:
+			
+			break;
+		}
+	},
+	hideToast:function(){
+		$(".toast").removeClass("toast_in");
+		$(".toast").addClass("toast_out");
+		setTimeout(function(){
+			$(".toast").hide();
+		},500);
+		
 	},
 	back : function(e) {
 		if (app.mode === "zoom") {

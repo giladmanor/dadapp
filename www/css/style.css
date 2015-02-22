@@ -3,6 +3,7 @@
 @import "emotion.css";
 @import "real.css";
 @import "viz.css";
+@import "toast.css";
 
 body{
 	position:absolute;
@@ -19,3 +20,24 @@ body{
 	color:black;
 	text-align:center;
 }
+
+.full-Screen-digest{
+	display:none;
+	background-color:#FAFAFA;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	padding:0;
+}
+.full-Screen-digest-title{
+	background-color: #FF665A;
+	padding:1em;
+	color:#FAFAFA;
+}
+.full-Screen-digest-title i{
+	float:right;
+}
+
+
