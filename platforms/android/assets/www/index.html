@@ -58,12 +58,6 @@
 
 		</script>
 		
-		<script id="toast-tpl" type="text/x-handlebars-template" >
-			
-		</script>
-		
-		
-
 		<div class="real" ontouchstart="app.touchStart(event);" ontouchmove="app.touchMove(event);">
 			<ul class="viz-container">
 				
@@ -71,6 +65,7 @@
 			<div class="loader"><i class="ion-ios7-reloading"></i></div>
 		</div>
 		<div class="navbar navshow">
+			<i class="fa fa-bars settings-button" onclick="app.showSettings()"></i>
 			<img src="img/logo.png">
 			<div class="title" onclick="app.goTop()">
 				dadaviz
