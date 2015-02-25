@@ -101,6 +101,7 @@ var app = {
 			setTimeout(function(){
 				$(".toast").show();
 				$(".toast").addClass("toast_in");
+				$(".toast-message").html(data.toast_message);
 			},4000);
 			
 			
