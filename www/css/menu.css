@@ -1,0 +1,70 @@
+@-webkit-keyframes animate_menu_in {
+0% { -webkit-transform: translate(-20em, 0); }
+80% { -webkit-transform: translate(-1em, 0); }
+100% { -webkit-transform: translate(0, 0); }
+}
+
+@-webkit-keyframes animate_menu_out {
+0% { -webkit-transform: translate(0, 0); }
+100% { -webkit-transform: translate(-35em, 0); }
+
+}
+
+.menu_in {
+	-webkit-animation-name: animate_menu_in;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+}
+
+.menu_out {
+	-webkit-animation-name: animate_menu_out;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+
+.menu {
+	background-color: #FF999e;
+	color: white;
+	width: 97%;
+	box-shadow: 0px 5px 15px gray;
+	/*transform: translate(-25em,0);*/
+	display: none;
+}
+
+.menu-title {
+	background-color: #FF665A;
+	font-size: 1.45em;
+	padding: 0.7em;
+}
+
+.menu-container {
+	padding: 1em;
+	overflow: auto;
+}
+
+.menu-container li {
+	font-size: 1.7em;
+	padding: 0.7em;
+	box-shadow: 0px 1px 1px gray;
+}
+
+.menu-remove {
+	float: right;
+}
+
+.menu-profile {
+	display: none;
+}
+
+.menu-subscriptions {
+	display: none;
+}
+
+.menu-container h3 {
+	color: white;
+}

@@ -66,21 +66,21 @@ var app = {
 			}
 			// var say = "";
 			// Object.keys(e).forEach(function(i) {
-				// say += " " + i;
+			// say += " " + i;
 			// });
 			// alert(say);
 
 			break;
 
 		case 'message':
-			
+
 			var id = e.payload.viz_id;
 			service.load(id, function(viz) {
 				app.showViz(viz, true);
 			});
-			
+
 			app.pushMessageRenderer(e.payload);
-			
+
 			service.record_open_url(id);
 			service.record_action("open_from_GCM", id);
 			break;
@@ -94,33 +94,44 @@ var app = {
 			break;
 		}
 	},
-	pushMessageRenderer:function(data){
+	pushMessageRenderer : function(data) {
 		switch( data.type ) {
 		case 'toast':
 			admober.pause = data.suspend_admob || 0;
-			setTimeout(function(){
+			setTimeout(function() {
 				$(".toast").show();
 				$(".toast").addClass("toast_in");
 				$(".toast-message").html(data.toast_message);
-			},4000);
-			
-			
-			
+			}, 4000);
+
 			break;
 
-		
 		default:
-			
+
 			break;
 		}
 	},
-	hideToast:function(){
+	showSettings : function() {
+		$(".menu").show();
+		$(".menu").removeClass("menu_out");
+		$(".menu").addClass("menu_in");
+		setTimeout(function() {
+			$(".menu").removeClass("menu_in");
+		}, 600);
+	},
+	hideSettings : function() {
+		$(".menu").addClass("menu_out");
+		setTimeout(function() {
+			$(".menu").hide();
+		}, 500);
+	},
+	hideToast : function() {
 		$(".toast").removeClass("toast_in");
 		$(".toast").addClass("toast_out");
-		setTimeout(function(){
+		setTimeout(function() {
 			$(".toast").hide();
-		},500);
-		
+		}, 500);
+
 	},
 	back : function(e) {
 		if (app.mode === "zoom") {
