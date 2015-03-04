@@ -45,6 +45,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\PushNotificat
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\templates \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\emotion.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\font-awesome.min.css \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\menu.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\navbar.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\real.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\style.css \
@@ -76,6 +77,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\app.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\ga.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\handlebars-v2.0.0.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\jquery-1.11.1.min.js \
+C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\menu.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\services.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\lib\ionic\css \

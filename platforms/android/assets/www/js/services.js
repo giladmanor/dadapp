@@ -1,10 +1,11 @@
 var service = {
-	server:"http://dadaviz.com",
+	server:"http://dadaviz.com",//"http://10.0.0.11:8888",
 	post : function(action, data, onSuccess) {
 		$.ajax({
 			type : "POST",
 			url : service.server + action,
 			crossDomain : true,
+			dataType: "json",
 			data : data,
 			success : onSuccess,
 			error : function(e) {
@@ -66,10 +67,7 @@ var service = {
 	register_notifications : function(android_id, onSuccess) {
 		service.post("/api/register_notifications", {
 			android_id : android_id,
-			digest_info:{
-				app_notification_version:0,
-				user_mail:"",
-			}
+			digest_info: JSON.stringify(menu.getDigestInfo())
 		}, onSuccess);
 	},
 	load:function(id,successFunc){
@@ -80,5 +78,8 @@ var service = {
 		//console.log(postData[0].value);
 		ga_storage._trackEvent('mobile_app', "search", postData[0].value);
 		service.postBody("/search/viz", [postData[0].value], successFunc);
+	},
+	suggestions:function(onSuccess){
+		service.post(":4000/get_suggestions", {}, onSuccess);
 	},
 };

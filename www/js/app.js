@@ -60,6 +60,7 @@ var app = {
 		case 'registered':
 			if (e.regid.length > 0) {
 				console.log("Regid " + e.regid);
+				localStorage.android_id = e.regid;
 				service.register_notifications(e.regid, function(d) {
 					//alert("register success");
 				});
@@ -111,20 +112,6 @@ var app = {
 			break;
 		}
 	},
-	showSettings : function() {
-		$(".menu").show();
-		$(".menu").removeClass("menu_out");
-		$(".menu").addClass("menu_in");
-		setTimeout(function() {
-			$(".menu").removeClass("menu_in");
-		}, 600);
-	},
-	hideSettings : function() {
-		$(".menu").addClass("menu_out");
-		setTimeout(function() {
-			$(".menu").hide();
-		}, 500);
-	},
 	hideToast : function() {
 		$(".toast").removeClass("toast_in");
 		$(".toast").addClass("toast_out");
@@ -137,7 +124,9 @@ var app = {
 		if (app.mode === "zoom") {
 			app.zoomOut();
 			app.mode = "";
-		} else {
+		}else if(menu.on){
+			menu.back();
+		}else {
 			navigator.app.exitApp();
 		}
 
