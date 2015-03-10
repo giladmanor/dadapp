@@ -41,6 +41,13 @@ module.exports = [
         "clobbers": [
             "PushNotification"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -53,6 +60,7 @@ module.exports.metadata =
     "com.borismus.webintent": "1.0.0",
     "com.google.cordova.admob": "2.7.0",
     "com.phonegap.plugins.PushPlugin": "2.4.0",
+    "org.apache.cordova.inappbrowser": "0.6.0",
     "com.rjfun.cordova.extension": "1.0.6",
     "com.google.playservices": "19.0.0"
 }

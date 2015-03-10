@@ -19,6 +19,7 @@
 		<script src="js/menu.js"></script>
 		<script src="js/services.js"></script>
 		<script src="js/admober.js"></script>
+		<script src="js/twitter_login.js"></script>
 	</head>
 	<body  class="platform-android platform-cordova platform-webview">
 		<script id="viz-tpl" type="text/x-handlebars-template" >
@@ -66,11 +67,15 @@
 			<div class="loader"><i class="ion-ios7-reloading"></i></div>
 		</div>
 		<div class="navbar navshow">
-			<i class="fa fa-bars settings-button" onclick="menu.show()"></i>
-			<img src="img/logo.png">
+			<img src="img/logo.png" onclick="app.goTop()">
 			<div class="title" onclick="app.goTop()">
-				dadaviz
+				
 			</div>
+			<div class="settings-buttons">
+				<i class="fa fa-bell" onclick="menu.show('subscriptions')"></i>&nbsp;&nbsp;&nbsp;
+				<i class="fa fa-heart" onclick="menu.show('favorites')"></i>
+			</div>
+			
 			<i class="ion-android-search search-toggle" onclick="app.showSearch()"></i>
 
 		</div>
@@ -115,14 +120,10 @@
 		<div class="menu">
 			
 			<div class="menu-title"  onclick="menu.back()">
-				<span class="menu-title-icon"><img class="logo" src="img/logo.png"></span> Menu <span class="menu-sub"></span>
+				<span class="menu-title-icon"><i class="fa fa-chevron-left"></i></span><span class="menu-sub"></span>
 			</div>
 			<div class="menu-container menu-options">
-				<ul>
-					<li onclick="menu.showProfile()"><i class="fa fa-user"></i> Profile</li>
-					<li onclick="menu.showSubscriptions()"><i class="fa fa-th-list"></i> My Subscriptions</li>
-					<li onclick="menu.showFavorites()"><i class="fa fa-heart"></i> My Favorites</li>
-				</ul>
+				
 				
 			</div>
 			
@@ -132,14 +133,11 @@
 				<input type="password" placeholder="Password" />
 				<button class="login" ><i class="fa fa-circle-o-notch"></i> Submit</button>
 				-or-<br />
-				<button class="twitter"><i class="fa fa-twitter"></i> Twitter</button>
+				<button class="twitter" onclick="Twitter.login()"><i class="fa fa-twitter"></i> Twitter</button>
 				<div class="menu-profile-validation-wait"><i class="fa fa-circle-o-notch role"></i></div>
 			</div>
 			
 			<div class="menu-container menu-subscriptions">
-				<ul class="menu-subscriptions-list">
-				</ul>
-				<button onclick="menu.plusSubscription()"><i class="fa fa-plus"></i></button>
 				<div class="menu-subscriptions-add">
 					Add a Subscription to
 					<input id="menu-subscriptions-add-input" placeholder="Start Typing" onkeydown="menu.suggestionFilter($('#menu-subscriptions-add-input').val())"/>
@@ -147,6 +145,10 @@
 						
 					</ul>
 				</div>
+				<ul class="menu-subscriptions-list">
+				</ul>
+				<button onclick="menu.plusSubscription()"><i class="fa fa-plus"></i></button>
+				
 				
 			</div>
 			
@@ -171,7 +173,8 @@
 		ga_storage._trackEvent('mobile_app', "open app");
 	
 		app.init();
-		menu.show();
+		//menu.show();
+		//menu.show('subscriptions')
 	</script>
 
 </html>

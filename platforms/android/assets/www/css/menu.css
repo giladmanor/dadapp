@@ -41,34 +41,56 @@
 }
 
 .menu {
-	background-color: #FF999e;
-	color: white;
-	width: 97%;
-	box-shadow: 0px 5px 15px gray;
+	background-color: #FFFFFF;
+	color: black;
+	width: 100%;
+	/*box-shadow: 0px 5px 15px gray;*/
 	/*transform: translate(-25em,0);*/
 	display: none;
 	
 }
 
 .menu-title {
+	color: white;
 	background-color: #FF665A;
 	font-size: 1.45em;
 	padding: 0.7em;
 }
 
 .menu-container {
-	padding: 1em;
+	/*padding: 1em;*/
 	overflow: auto;
+}
+.menu-container ul {
+	padding: 1em;
+	margin-top:0.5em;
 }
 
 .menu-container li {
+	color:gray;
 	font-size: 1.7em;
-	padding: 0.7em;
-	box-shadow: 0px 1px 1px gray;
+	padding-left: 0em;
+	padding-right: 0em;
+	padding-top:0.3em;
+	padding-bottom: 0.3em;
+	/*box-shadow: 0px 1px 1px gray;*/
+	border-bottom: solid 1px #EEEEEE;
+}
+.menu-list-text{
+	font-size: 0.7em;
+}
+
+.fa-twitter{
+	color: #4099FF;
+}
+.fa-tag{
+	color: #FF665A;
 }
 
 .menu-remove {
 	float: right;
+	font-size: 1.4em;
+	color:silver;
 }
 
 .menu-profile {
@@ -76,26 +98,35 @@
 }
 
 .menu-subscriptions {
+	
 	display: none;
 }
 
 .menu-container h3 {
-	color: white;
+	color: black;
 }
 
 .menu-subscriptions-list{
 	height:30em;
 	overflow: auto;
-	border: solid 1px gray;
+	/*border: solid 1px gray;*/
 }
 
 .menu-subscriptions-suggestions{
+	display:none;
+	position:absolute;
+	top:9.5em;
+	right:1em;
+	left:1em;
 	height:20em;
 	overflow: auto;
-	border: solid 1px gray;
+	background-color: white;
+	box-shadow: 0px 1px 1px gray;
+	/*border: solid 1px gray;*/
 }
 
 .menu-subscriptions button{
+	display:none;
 	border: none;
 	bottom: 0.4em;
 	right: 0.4em;
@@ -114,13 +145,21 @@
 }
 
 .menu-subscriptions-add{
-	display: none;
+	/*display: none;*/
+	background-color: #F9F9F9;
+	padding:1em;
+	padding-bottom:2em;
+	color:gray;
+	
 }
 
 .menu-subscriptions-add input{
-	font-size: 1.5em;
+	font-size: 1.2em;
 	border:0;
 	padding:0.3em;
+	margin-top:1em;
+	background-color: #F9F9F9;
+	border-left: solid 2px #FF665A;
 }
 
 .menu-profile input{
@@ -174,4 +213,8 @@
 	float:left;
 	padding: 0em;
 	margin-right:1em;
+}
+
+.menu-avatar{
+	max-height: 0.8em;
 }
