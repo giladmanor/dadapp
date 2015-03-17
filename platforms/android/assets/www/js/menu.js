@@ -8,16 +8,15 @@ var menu = {
 			$(".menu").removeClass("menu_in");
 		}, 600);
 		menu.on = true;
-		
-		if(code==="subscriptions"){
+
+		if (code === "subscriptions") {
 			menu.showSubscriptions();
-		}else if(code==="favorites"){
+		} else if (code === "favorites") {
 			menu.showFavorites();
-		}else {
+		} else {
 			//do nothing
 		}
-		
-		
+
 	},
 	hide : function() {
 		$(".menu").addClass("menu_out");
@@ -34,7 +33,7 @@ var menu = {
 		$(".menu-profile").fadeIn();
 	},
 	showSubscriptions : function() {
-		menu.getSuggestions();
+		menu.loadSuggestions();
 		if (localStorage.user_subscriptions != null) {
 			menu.subscriptions = localStorage.user_subscriptions.split(",");
 		}
@@ -44,7 +43,7 @@ var menu = {
 		menu.setSubMenu(title);
 		$(".menu-options").hide();
 		$(".menu-subscriptions").fadeIn();
-		menu.populateSubscriptions();
+
 	},
 	showFavorites : function() {
 
@@ -54,117 +53,116 @@ var menu = {
 		$(".menu-subscriptions").hide();
 		// $(".menu-options").fadeIn();
 		// if ($(".menu-sub").html() != "") {
-			// menu.setSubMenu("");
-			// // $(".menu-title-icon").html('<img class="logo" src="img/logo.png">');
+		// menu.setSubMenu("");
+		// // $(".menu-title-icon").html('<img class="logo" src="img/logo.png">');
 		// } else {
-			// menu.hide();
+		// menu.hide();
 		// }
 		menu.hide();
 	},
 	setSubMenu : function(title) {
 		if (title != "") {
-			title =  title;
+			title = title;
 		}
 		$(".menu-sub").html(title);
 	},
-	plusSubscription : function() {
-		$(".menu-subscriptions-suggestions").fadeOut();
-		menu.addSubscription($("#menu-subscriptions-add-input").val());
-		return;
-		
-		// if ($(".menu-subscriptions-add").css("display") == "none") {
-			// $("#menu-subscriptions-add-input").val("");
-			// $(".menu-subscriptions-add").fadeIn();
-			// $(".menu-subscriptions-list").hide();
-			// menu.getSuggestions();
-		// } else {
-			// menu.addSubscription($("#menu-subscriptions-add-input").val());
-// 
-		// }
 
-	},
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
 	subscriptions : [],
+	suggestions : [],
+	suggestions_ref : {},
+
 	getDigestInfo : function() {
 		if (menu.subscriptions.length == 0 && localStorage.user_subscriptions != null) {
 			menu.subscriptions = localStorage.user_subscriptions.split(",");
 		}
-
 		var o = {
 			subscriptions : menu.subscriptions,
 			last_updated_at : new Date()
 		};
 		return o;
 	},
-	removeSubscription : function(name) {
-		menu.subscriptions.splice(menu.subscriptions.indexOf(name), 1);
-		menu.saveSubscriptions();
+
+	removeSubscription : function(key) {
+		menu.subscriptions.splice(menu.subscriptions.indexOf(key), 1);
 		menu.populateSubscriptions();
+		menu.saveSubscriptions();
+
 	},
-	addSubscription : function(name) {
-		if (name != "") {
-			menu.subscriptions.push(name);
+
+	addSubscription : function(key) {
+		if (key != "") {
+			menu.subscriptions.push(key);
 			menu.populateSubscriptions();
 			menu.saveSubscriptions();
-			// $(".menu-subscriptions-add").hide();
-			// $(".menu-subscriptions-list").fadeIn();
 			$(".menu-subscriptions-suggestions").fadeOut();
+			$("#menu-subscriptions-add-input").val("");
 		}
 
 	},
 	saveSubscriptions : function() {
-		localStorage.user_subscriptions = menu.subscriptions.join();
-		service.register_notifications(localStorage.android_id, function(d) {
-
+		localStorage.user_subscriptions = menu.subscriptions;
+		service.register_notifications(localStorage.android_id, menu.getDigestInfo(), function(d) {
 		});
 	},
-	subscriptionTag : function(label) {
-		if (menu.suggestions_ref[label]!=null) {
-			return '<img class="menu-avatar" src="'+menu.suggestions_ref[label].avatar+'"/>';
+
+	subscriptionLabel : function(key) {
+		if (menu.suggestions_ref[key] != null) {
+			return menu.suggestions_ref[key].name;
+		} else {
+			return key;
+		}
+	},
+	subscriptionTag : function(key) {
+		if (menu.suggestions_ref[key] != null) {
+			return '<img class="menu-avatar" src="' + menu.suggestions_ref[key].avatar + '"/>';
 		} else {
 			return '<i class="fa fa-tag"></i>';
 		}
 	},
 	subscriptionKey : function(label) {
-		if (menu.suggestions_ref[label]!=null) {
+		if (menu.suggestions_ref[label] != null) {
 			return menu.suggestions_ref[label].twitter;
 		} else {
 			return label;
 		}
 	},
-	
-	populateSubscriptions : function() {
-		$(".menu-subscriptions-list").html("");
-		if (menu.subscriptions.length == 0) {
-			menu.plusSubscription();
-		} else {
-			menu.subscriptions.forEach(function(s) {
-				$(".menu-subscriptions-list").append("<li onclick='menu.addSubscription(\"" + menu.subscriptionKey(s) + "\")'>" + menu.subscriptionTag(s) + ' ' + s + "</li>");
-				
-			});
-		}
-	},
-	suggestions : [],
-	suggestions_ref : {},
-	getSuggestions : function() {
+
+	loadSuggestions : function() {
 		if (menu.suggestions.length == 0) {
 			service.suggestions(function(res) {
 				menu.suggestions = Object.keys(res.result);
 				menu.suggestions_ref = res.result;
+				menu.populateSubscriptions();
 			});
 		}
 	},
 	suggestionFilter : function(key) {
 		$(".menu-subscriptions-suggestions").fadeIn();
 		$(".menu-subscriptions-suggestions").html("");
+
 		var regex = new RegExp(key.toLowerCase().split(" ").join("|"));
-		
 		result = $.grep(menu.suggestions, function(s) {
 			return s.toLowerCase().match(regex);
 		});
 
-		result.forEach(function(s) {
-			$(".menu-subscriptions-suggestions").append("<li onclick='menu.addSubscription(\"" + menu.subscriptionKey(s) + "\")'>" + menu.subscriptionTag(s) + ' ' + s + "</li>");
-		});
+		result.forEach(function(key) {
+			if (menu.subscriptions.indexOf(key) < 0) {
+				$(".menu-subscriptions-suggestions").append("<li onclick='menu.addSubscription(\"" + key + "\")'>" + menu.subscriptionTag(key) + " " + menu.subscriptionLabel(key) + "</li>");
+			}
 
+		});
+	},
+
+	populateSubscriptions : function() {
+		$(".menu-subscriptions-list").html("");
+		menu.subscriptions.forEach(function(key) {
+			if (menu.suggestions.indexOf(key) > -1) {
+				$(".menu-subscriptions-list").append("<li >" + menu.subscriptionTag(key) + " " + menu.subscriptionLabel(key) + "<i class='fa fa-minus-square menu-remove' onclick='menu.removeSubscription(\"" + key + "\")'></li>");
+			}
+			//var item = "<li>" + menu.subscriptionTag(datum) + ' ' + datum + ' <i class="fa fa-minus-square menu-remove" onclick="menu.removeSubscription(\'' + datum + '\')"></i></li>';
+		});
 	},
 };

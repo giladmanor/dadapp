@@ -22,8 +22,9 @@
 		<script src="js/twitter_login.js"></script>
 	</head>
 	<body  class="platform-android platform-cordova platform-webview">
+		
 		<script id="viz-tpl" type="text/x-handlebars-template" >
-			<li class="vizContainer" id="viz_{{id}}" prev="{{prev_viz}}" style="background-color: {{background_color}}">
+			<li class="vizContainer" id="viz_{{id}}" viz_id="{{id}}" prev="{{prev_viz}}" style="background-color: {{background_color}}">
 				<div class="vizInfo" id="vizInfo_{{id}}">
 					<div class="vizTitle" >
 						{{title}}
@@ -58,27 +59,26 @@
 				</div>
 			</li>
 
-		</script>
+		</script><!-- end viz renderer -->
 		
 		<div class="real" ontouchstart="app.touchStart(event);" ontouchmove="app.touchMove(event);">
 			<ul class="viz-container">
-				
 			</ul>
 			<div class="loader"><i class="ion-ios7-reloading"></i></div>
 		</div>
+
 		<div class="navbar navshow">
-			<img src="img/logo.png" onclick="app.goTop()">
-			<div class="title" onclick="app.goTop()">
-				
+			<span class="nav-title-icon" onclick="app.topNavClick()"><img src="img/logo.png" class="logo-img"></span>
+			
+			<div class="title" onclick="app.topNavClick()">
 			</div>
 			<div class="settings-buttons">
 				<i class="fa fa-bell" onclick="menu.show('subscriptions')"></i>&nbsp;&nbsp;&nbsp;
-				<i class="fa fa-heart" onclick="menu.show('favorites')"></i>
+				<i class="fa fa-heart favorites-button" onclick="app.toggleFavorites()"></i>
 			</div>
-			
 			<i class="ion-android-search search-toggle" onclick="app.showSearch()"></i>
-
 		</div>
+
 		<div class="searchbar">
 			<i class="ion-android-search search-icon"></i>
 			<form onsubmit="app.search(this);return false;">
@@ -105,28 +105,22 @@
 		<div class="emotion share rolein" onclick="app.share()">
 			<i class="ion-android-share"></i>
 		</div>
+
 		<div class="emotion like ">
 			<i class="fa fa-heart"></i>
 		</div>
 
-		<div class="flight-controll">
-			
-		</div>
 		
-		<div class="full-Screen-digest">
-			<div class="full-Screen-digest-title">Digest <i class="ion-android-close"></i></div>
-		</div>
 		
+		
+		<!-- menu -->
 		<div class="menu">
-			
 			<div class="menu-title"  onclick="menu.back()">
 				<span class="menu-title-icon"><i class="fa fa-chevron-left"></i></span><span class="menu-sub"></span>
 			</div>
 			<div class="menu-container menu-options">
-				
-				
 			</div>
-			
+
 			<div class="menu-container menu-profile">
 				Register with your dadaviz account
 				<input placeholder="My Email Address" />
@@ -142,18 +136,13 @@
 					Add a Subscription to
 					<input id="menu-subscriptions-add-input" placeholder="Start Typing" onkeydown="menu.suggestionFilter($('#menu-subscriptions-add-input').val())"/>
 					<ul class="menu-subscriptions-suggestions">
-						
 					</ul>
 				</div>
 				<ul class="menu-subscriptions-list">
 				</ul>
 				<button onclick="menu.plusSubscription()"><i class="fa fa-plus"></i></button>
-				
-				
 			</div>
-			
-			
-		</div>
+		</div><!-- end menu -->
 		
 		
 		<div class="toast toast_in">
@@ -161,10 +150,15 @@
 			<div class="toast-message">
 				XX
 			</div>
-			
 		</div>
 		
+		<div class="full-Screen-digest">
+			<div class="full-Screen-digest-title">Digest <i class="ion-android-close"></i></div>
+		</div>
 		
+		<div class="flight-controll">
+		</div>
+
 
 	</body>
 	<script src="js/ga.js"></script>
@@ -173,8 +167,7 @@
 		ga_storage._trackEvent('mobile_app', "open app");
 	
 		app.init();
-		//menu.show();
-		//menu.show('subscriptions')
+		
 	</script>
 
 </html>

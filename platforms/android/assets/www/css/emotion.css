@@ -9,6 +9,13 @@
 100% { -webkit-transform: scale(0.1, 0.1); }
 }
 
+@-webkit-keyframes animate_heartbeet-twich {
+0% { -webkit-transform: translate(0,0.1em) scale(1.5, 1.5) rotate(10deg); }
+5% { -webkit-transform: translate(0,0.1em) scale(1.7, 1.7) rotate(10deg); }
+10% { -webkit-transform: translate(0,0.1em) scale(1.5, 1.5) rotate(10deg); }
+100% { -webkit-transform: translate(0,0.1em) scale(1.5, 1.5) rotate(10deg); }
+}
+
 @-webkit-keyframes animate_rolein {
 0% { -webkit-transform: translate(3em, 0) rotate(135deg); }
 50% { -webkit-transform: translate(2em, 0) rotate(90deg); }
@@ -28,6 +35,14 @@
 	-webkit-animation-duration: 1s;
 	-webkit-transform-origin: 50% 50%;
 	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+
+.heartbeet-infinit {
+	-webkit-animation-name: animate_heartbeet-twich;
+	-webkit-animation-duration: 5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 }
 
