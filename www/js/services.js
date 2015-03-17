@@ -38,6 +38,7 @@ var service = {
 			success : onSuccess,
 			error : function(e) {
 				//alert('Something went wrong! ' + action);
+				//$(".flight-controll").html(action);
 				console.log(e);
 			}
 		});
@@ -64,10 +65,10 @@ var service = {
 			password : password
 		}, onSuccess);
 	},
-	register_notifications : function(android_id, onSuccess) {
+	register_notifications : function(android_id, digest,onSuccess) {
 		service.post("/api/register_notifications", {
 			android_id : android_id,
-			digest_info: JSON.stringify(menu.getDigestInfo())
+			digest_info: JSON.stringify(digest)
 		}, onSuccess);
 	},
 	load:function(id,successFunc){
@@ -78,6 +79,13 @@ var service = {
 		//console.log(postData[0].value);
 		ga_storage._trackEvent('mobile_app', "search", postData[0].value);
 		service.postBody("/search/viz", [postData[0].value], successFunc);
+	},
+	favorites: function(prev,user,successFunc){
+		var url;
+		url = "/api/viz/list/"+prev+"?filter_name=favs&filter_value=" + user;
+		
+		console.log(url);
+		service.get(url,  successFunc);
 	},
 	suggestions:function(onSuccess){
 		service.post(":4000/get_suggestions", {}, onSuccess);

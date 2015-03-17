@@ -6,6 +6,9 @@ var app = {
 	init : function() {
 		console.log(".");
 		app.vizTpl = Handlebars.compile($("#viz-tpl").html());
+		localStorage.device_uuid = "ee15ca00f75f14bf";
+		app.preloadGetter = app.preloadRegularGetter;
+		app.topNavClick = app.goTop;
 
 		service.load("top", function(viz) {
 			app.showViz(viz);
@@ -124,9 +127,11 @@ var app = {
 		if (app.mode === "zoom") {
 			app.zoomOut();
 			app.mode = "";
-		}else if(menu.on){
+		} else if (menu.on) {
 			menu.back();
-		}else {
+		} else if (app.mode=="favorites") {
+			app.hideFavorites();
+		}else{
 			navigator.app.exitApp();
 		}
 
@@ -245,7 +250,6 @@ var app = {
 		$(".searchbar").addClass("searchshow");
 		setTimeout(function() {
 			$(".searchbar").removeClass("searchshow");
-
 		}, 500);
 		app.presearch = null;
 		app.presearchBuffer = null;
@@ -302,6 +306,57 @@ var app = {
 			$(".like").removeClass("heartbeet");
 		}, 1000);
 	},
+	topNavClick:null,
+	toggleFavorites : function() {
+
+		if (app.mode != "favorites") {
+			app.showFavorites();
+			app.mode = "favorites";
+		} else {
+			app.hideFavorites();
+			app.mode = "";
+		}
+
+	},
+	hideFavorites : function() {
+		//$(".favorites-button").removeClass("heartbeet-infinit");
+		app.mode="";
+		$(".title").html("");
+		app.topNavClick = app.goTop;
+		$(".nav-title-icon").html('<img src="img/logo.png" class="logo-img" >');
+		//$(".flight-controll").html("");
+		app.preloadGetter = app.preloadRegularGetter;
+		$('.viz-container').html("");
+		app.buffer = [];
+		app.loading = [];
+		service.load("top", function(viz) {
+			console.log("load");
+			app.showViz(viz);
+			app.preload();
+		});
+		
+	},
+	showFavorites : function() {
+		app.mode="favorites";
+		//$(".flight-controll").html("");
+		app.topNavClick = app.back;
+		$(".nav-title-icon").html('<i class="fa fa-chevron-left"></i>');
+		app.preloadGetter = app.preloadFavoritesGetter;
+		$(".title").html('My Favorites');
+		// app.presearch = $('.viz-container').html();
+		// app.presearchBuffer = app.buffer;
+		//$(".favorites-button").addClass("heartbeet-infinit");
+		$('.viz-container').html("");
+		app.buffer = [];
+		app.loading = [];
+		service.favorites("top","mobile_" + localStorage.device_uuid, function(res) {
+			res.forEach(function(viz) {
+				setTimeout(function() {
+					app.showViz(viz);
+				}, 500);
+			});
+		});
+	},
 	search : function(formObj) {
 
 		$(".searchLoading").fadeIn();
@@ -344,19 +399,40 @@ var app = {
 
 		//$(".flight-controll").html( app.buffer[Math.round(vizIndex)] );
 	},
+	preloadGetter : null,
+	preloadRegularGetter : function(prev) {
+		service.load(prev, function(viz) {
+			app.showViz(viz);
+			app.preload();
+		});
+	},
+	preloadFavoritesGetter : function(prev) {
+		service.favorites(prev, "mobile_" + localStorage.device_uuid, function(res) {
+			res.forEach(function(viz) {
+				setTimeout(function() {
+					app.showViz(viz);
+				}, 500);
+			});
+			app.preload();
+		});
+	},
 	preload : function() {
+		console.log("preload");
 		app.recordView();
 		var scrolloc = $(".viz-container").height() - $(".real").scrollTop() - 5 * $(".real").height();
-
+		
+		//$(".flight-controll").html(app.mode);
+		
 		var prev = $(".vizContainer").last().attr('prev');
+		if(app.mode=="favorites"){
+			prev = $(".vizContainer").last().attr('viz_id');
+		}
+		
 		if (scrolloc < 0 && app.loading.indexOf(prev) == -1) {
+			console.log("preload!");
 			app.loading.push(prev);
-
-			service.load(prev, function(viz) {
-				app.showViz(viz);
-				app.preload();
-
-			});
+			
+			app.preloadGetter(prev);
 		}
 	},
 	goTop : function() {
