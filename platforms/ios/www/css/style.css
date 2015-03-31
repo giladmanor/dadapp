@@ -4,6 +4,7 @@
 @import "real.css";
 @import "viz.css";
 @import "toast.css";
+@import "menu.css";
 
 body{
 	position:absolute;
@@ -19,6 +20,7 @@ body{
 	width: 100%;
 	color:black;
 	text-align:center;
+	background-color: #EEEEEE;
 }
 
 .full-Screen-digest{

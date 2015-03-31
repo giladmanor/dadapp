@@ -1,0 +1,220 @@
+@-webkit-keyframes animate_menu_in {
+0% { -webkit-transform: translate(-20em, 0); }
+80% { -webkit-transform: translate(-1em, 0); }
+100% { -webkit-transform: translate(0, 0); }
+}
+
+@-webkit-keyframes animate_menu_out {
+0% { -webkit-transform: translate(0, 0); }
+100% { -webkit-transform: translate(-35em, 0); }
+}
+
+@-webkit-keyframes animate_role {
+0% { -webkit-transform:  rotate(0deg); }
+50% { -webkit-transform: rotate(180deg); }
+100% { -webkit-transform: rotate(360deg); }
+}
+
+.role{
+	-webkit-animation-name: animate_role;
+	-webkit-animation-duration: 2s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+.menu_in {
+	-webkit-animation-name: animate_menu_in;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	
+}
+
+.menu_out {
+	-webkit-animation-name: animate_menu_out;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+
+.menu {
+	background-color: #FFFFFF;
+	color: black;
+	width: 100%;
+	/*box-shadow: 0px 5px 15px gray;*/
+	/*transform: translate(-25em,0);*/
+	display: none;
+	
+}
+
+.menu-title {
+	color: white;
+	background-color: #FF665A;
+	font-size: 1.45em;
+	padding: 0.7em;
+}
+
+.menu-container {
+	/*padding: 1em;*/
+	overflow: auto;
+}
+.menu-container ul {
+	padding: 1em;
+	margin-top:0.5em;
+}
+
+.menu-container li {
+	color:gray;
+	font-size: 1.7em;
+	padding-left: 0em;
+	padding-right: 0em;
+	padding-top:0.3em;
+	padding-bottom: 0.3em;
+	/*box-shadow: 0px 1px 1px gray;*/
+	border-bottom: solid 1px #EEEEEE;
+}
+.menu-list-text{
+	font-size: 0.7em;
+}
+
+.fa-twitter{
+	color: #4099FF;
+}
+.fa-tag{
+	color: #FF665A;
+}
+
+.menu-remove {
+	float: right;
+	font-size: 1.4em;
+	color:silver;
+}
+
+.menu-profile {
+	display: none;
+}
+
+.menu-subscriptions {
+	
+	display: none;
+}
+
+.menu-container h3 {
+	color: black;
+}
+
+.menu-subscriptions-list{
+	height:30em;
+	overflow: auto;
+	/*border: solid 1px gray;*/
+}
+
+.menu-subscriptions-suggestions{
+	display:none;
+	position:absolute;
+	top:9.5em;
+	right:1em;
+	left:1em;
+	height:20em;
+	overflow: auto;
+	background-color: white;
+	box-shadow: 0px 1px 1px gray;
+	/*border: solid 1px gray;*/
+}
+
+.menu-subscriptions button{
+	display:none;
+	border: none;
+	bottom: 0.4em;
+	right: 0.4em;
+	background-color: #FF665A;
+	border-radius: 50%;
+	width: 1.8em;
+	height: 1.8em;
+	text-align: center;
+	font-size: 2em;
+	padding-top: 0.2em;
+	color: white;
+	box-shadow: 0px 2px 5px gray;
+	position:absolute;
+	bottom:1em;
+	right:1em;
+}
+
+.menu-subscriptions-add{
+	/*display: none;*/
+	background-color: #F9F9F9;
+	padding:1em;
+	padding-bottom:2em;
+	color:gray;
+	
+}
+
+.menu-subscriptions-add input{
+	font-size: 1.2em;
+	border:0;
+	padding:0.3em;
+	margin-top:1em;
+	background-color: #F9F9F9;
+	border-left: solid 2px #FF665A;
+}
+
+.menu-profile input{
+	font-size: 1.5em;
+	padding:0.2em;
+	margin-bottom:0.5em;
+	border:0;
+}
+
+.menu-profile input[type="password"]{
+	font-size: 1em;
+	padding:0.2em;
+	
+}
+
+.login{
+	font-size: 1.3em;
+	padding:0.4em;
+	width:100%;
+	background-color: #989898;
+	border:0;
+	color:white;
+	margin-bottom: 0.5em;
+}
+
+.twitter{
+	font-size: 1.3em;
+	padding:0.4em;
+	width:100%;
+	background-color: #4099FF;
+	border:0;
+	color:white;
+	margin-top: 0.5em;
+}
+
+.menu-profile-validation-wait{
+	display:none;
+	width: 100%;
+	text-align: center;
+	padding: 1em;
+	font-size: 3em;
+	color:#FF665A;
+}
+
+.logo{
+	max-height: 1.3em;
+	margin-top:-0.25em;
+}
+
+.menu-title-icon{
+	float:left;
+	padding: 0em;
+	margin-right:1em;
+}
+
+.menu-avatar{
+	max-height: 0.8em;
+}
