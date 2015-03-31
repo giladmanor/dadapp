@@ -64,7 +64,7 @@ var app = {
 			if (e.regid.length > 0) {
 				console.log("Regid " + e.regid);
 				localStorage.android_id = e.regid;
-				service.register_notifications(e.regid, function(d) {
+				service.register_notifications(e.regid,menu.getDigestInfo(), function(d) {
 					//alert("register success");
 				});
 			}

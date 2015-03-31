@@ -66,6 +66,7 @@ var service = {
 		}, onSuccess);
 	},
 	register_notifications : function(android_id, digest,onSuccess) {
+		
 		service.post("/api/register_notifications", {
 			android_id : android_id,
 			digest_info: JSON.stringify(digest)
@@ -88,6 +89,6 @@ var service = {
 		service.get(url,  successFunc);
 	},
 	suggestions:function(onSuccess){
-		service.post(":4000/get_suggestions", {}, onSuccess);
+		service.get("/api/subscriptions/suggestions", onSuccess);
 	},
 };

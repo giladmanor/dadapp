@@ -103,6 +103,7 @@ var menu = {
 
 	},
 	saveSubscriptions : function() {
+		
 		localStorage.user_subscriptions = menu.subscriptions;
 		service.register_notifications(localStorage.android_id, menu.getDigestInfo(), function(d) {
 		});
@@ -133,8 +134,8 @@ var menu = {
 	loadSuggestions : function() {
 		if (menu.suggestions.length == 0) {
 			service.suggestions(function(res) {
-				menu.suggestions = Object.keys(res.result);
-				menu.suggestions_ref = res.result;
+				menu.suggestions = Object.keys(res);
+				menu.suggestions_ref = res;
 				menu.populateSubscriptions();
 			});
 		}
