@@ -1,5 +1,12 @@
 function numberWithCommas(x) {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	//return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	if(x<1000){
+		return x;
+	}else if(x<1000000){
+		return Math.round(x/1000)+"k";
+	}else{
+		return Math.round(x/1000000)+"M";
+	}
 }
 
 var app = {
@@ -15,13 +22,17 @@ var app = {
 			//app.zoom(viz.id);
 			app.preload();
 		});
+		
+		setInterval(function(){
+			app.preload();
+		},2000);
 
 		document.addEventListener('deviceready', this.onDeviceReady, false);
 
 	},
 	onDeviceReady : function() {
 		//document.addEventListener("backbutton", app.back, true);
-		document.addEventListener("backbutton", app.back, true);
+		//document.addEventListener("backbutton", app.back, true);
 
 		localStorage.device_uuid = device.uuid;
 		service.login(localStorage.device_uuid, localStorage.device_uuid, function(d) {
@@ -115,6 +126,15 @@ var app = {
 			break;
 		}
 	},
+	simpleZoom:function(that){
+		//$(".zoomer").remove();
+		console.log("zoom",$("body").scrollTop());
+		//$("body").append('<div class="zoomer">XXXX</div>');
+		
+		window.location = "zoomer.html?"+($(that).children("img").attr("src"));
+		
+	},
+	
 	hideToast : function() {
 		$(".toast").removeClass("toast_in");
 		$(".toast").addClass("toast_out");
@@ -205,9 +225,9 @@ var app = {
 			image.css("height", app.zoom_h * s);
 		}
 	},
-	share : function() {
+	share : function(id) {
 		var title = "";
-		var id = app.shareId;
+		//var id = app.shareId;
 
 		window.plugins.socialsharing.share(title, null, null, 'http://dadaviz.com/i/' + id);
 	},
@@ -417,10 +437,11 @@ var app = {
 		});
 	},
 	preload : function() {
-		console.log("preload");
+		//console.log("preload");
 		app.recordView();
-		var scrolloc = $(".viz-container").height() - $(".real").scrollTop() - 5 * $(".real").height();
-		
+		var scrolloc = $(".viz-container").height() - $("body").scrollTop() ;
+		console.log("==",scrolloc);
+		//$("#scrollll").text(scrolloc);
 		//$(".flight-controll").html(app.mode);
 		
 		var prev = $(".vizContainer").last().attr('prev');
@@ -428,8 +449,8 @@ var app = {
 			prev = $(".vizContainer").last().attr('viz_id');
 		}
 		
-		if (scrolloc < 0 && app.loading.indexOf(prev) == -1) {
-			console.log("preload!");
+		if (scrolloc < 1000 && app.loading.indexOf(prev) == -1) {
+			console.log("preload!",scrolloc);
 			app.loading.push(prev);
 			
 			app.preloadGetter(prev);

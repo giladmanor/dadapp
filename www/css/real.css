@@ -6,6 +6,7 @@ div.real {
 	right: 0;
 	background-color: #FFFFFF;
 	overflow-y: auto;
+	overflow-x: hide;
 	padding-top: 4em;
 }
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, height=device-height">
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/jq.panzoom.js"></script>
+	</head>
+	<style>
+		body {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 0;
+			margin: 0;
+			background-color: #f1f3f7;
+			overflow: hidden;
+		}
+		img {
+			/*border: solid 5px #3B5998;*/
+		}
+
+		.container {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.container img {
+			max-width: 100%;
+			opacity: 0.01;
+		}
+
+	</style>
+	<body>
+		<div class="container">
+			<img src="http://front.dadaviz.com/media/viz_images/china-has-7-of-the-worlds-10-largest-ports-1432714614.64-1048169.png" />
+		</div>
+
+	</body>
+	<script>
+		$(document).ready(function() {
+			//return;
+			$(".container").panzoom();
+			$(".container img").css("max-width", "");
+
+			
+			console.log("src: ", window.location.search);
+			$(".container img").attr("src",window.location.search.replace("?",""));
+			var initScale = 1;
+
+			console.log("!", $(".container").panzoom("getMatrix"));
+			$(".container").panzoom("setMatrix", [initScale, 0, 0, initScale, 0, 0]);
+			//$(".container").panzoom("setTransform","translate(-500px -100px)");
+
+			$(".container img").load(function() {
+				var h = (window.innerHeight - $(this).height())/2;
+				$(this).css("margin-top", h+"px");
+				$(this).animate({opacity:1},500);
+			});
+
+		});
+	</script>
+</html>

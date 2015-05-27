@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>vizap</title>
+
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+
+		<!-- cordova script (this will be a 404 during development) -->
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/handlebars-v2.0.0.js"></script>
+		<script src="cordova.js"></script>
+		<script src="PushNotification.js"></script>
+
+		<!-- your app's js -->
+		<script src="js/app.js"></script>
+		<script src="js/menu.js"></script>
+		<script src="js/services.js"></script>
+		<script src="js/admober.js"></script>
+		<script src="js/twitter_login.js"></script>
+	</head>
+	<body >
+		
+		<script id="viz-tpl" type="text/x-handlebars-template" >
+			<li class="vizContainer" id="viz_{{id}}" viz_id="{{id}}" prev="{{prev_viz}}" style="background-color: {{background_color}}">
+				<div class="vizInfo" id="vizInfo_{{id}}">
+					<div class="vizTitle" >
+						{{title}}
+					</div>
+					<!-- <hr style="display: block; height: 1px;border: 0; border-top: 1px solid #d1d1d1; padding: 0;"> -->
+					
+				</div>
+	
+				<div class="image_container " id="image_container_{{id}}" onclick="app.zoomIn('{{id}}')">
+					<img class="viz_image_{{id}}" id="viz_image" src="{{image_url}}" />
+				</div>
+				<div class="vizDetails">
+						<ul style="list-style-type: none;">
+							{{#if is_liked}}
+							<li class="likable " ><div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">{{likes}}</span></div></li>
+							{{else}}
+							<li class="likable likable_{{id}}" ><div onclick="app.like({{id}})"><i class="fa fa-heart-o"></i>&nbsp<span class="likes_value">{{likes}}</span></div></li>
+							{{/if}}
+							{{#if author_twitter}}
+							<li>
+								<i class="fa fa-user"></i>&nbsp;&nbsp; Created by @{{author_twitter}}
+							</li>
+							{{/if}}
+							{{#if data_source_url}}
+							<li>
+								<a href="{{data_source_url}}"><i class="fa fa-link"></i>&nbsp;&nbsp;{{data_source_name}}</a>
+							</li>
+							{{/if}}
+							<li><li class="fa fa-eye"></li>&nbsp;&nbsp;<span>{{views}}</span></li>
+							
+							
+						</ul>
+					</div>
+			</li>
+			<li><hr></li><li><hr></li>
+
+		</script><!-- end viz renderer -->
+		
+		<div class="real" ontouchstart="app.touchStart(event);" ontouchmove="app.touchMove(event);">
+			<ul class="viz-container">
+			</ul>
+			<div class="loader"><i class="ion-ios7-reloading"></i></div>
+		</div>
+
+		<div class="navbar navshow">
+			<span class="nav-title-icon" onclick="app.topNavClick()"><img src="img/logo.png" class="logo-img"></span>
+			
+			<div class="title" onclick="app.topNavClick()">
+			</div>
+			<div class="settings-buttons">
+				<!-- <i class="fa fa-bell" onclick="menu.show('subscriptions')"></i>&nbsp;&nbsp;&nbsp; -->
+				<i class="fa fa-heart favorites-button" onclick="app.toggleFavorites()"></i>
+			</div>
+			<i class="ion-android-search search-toggle" onclick="app.showSearch()"></i>
+		</div>
+
+		<div class="searchbar">
+			<i class="ion-android-search search-icon"></i>
+			<form onsubmit="app.search(this);return false;">
+				<input id="searchTextInput" type="text" name="text"/>
+			</form>
+			<i class="ion-ios7-close-empty search-close" onclick="app.hideSearch()"></i>
+		</div>
+		
+		<div class="searchLoading">
+			<i class="ion-ios7-reloading"></i>
+		</div>
+		
+		<div class="searchNoResult">
+			Meh, No Results <i class="fa fa-frown-o"></i>
+		</div>
+
+		<div class="zoom" ontouchstart="app.zoomStart(event);" ontouchmove="app.zoomMove(event);">
+		</div>
+		
+		<div class="back" onclick="app.back()">
+			<i class="ion-android-close"></i>
+		</div>
+
+		<div class="emotion share rolein" onclick="app.share()">
+			<i class="ion-android-share"></i>
+		</div>
+
+		<div class="emotion like ">
+			<i class="fa fa-heart"></i>
+		</div>
+
+		
+		
+		
+		<!-- menu -->
+		<div class="menu">
+			<div class="menu-title"  onclick="menu.back()">
+				<span class="menu-title-icon"><i class="fa fa-chevron-left"></i></span><span class="menu-sub"></span>
+			</div>
+			<div class="menu-container menu-options">
+			</div>
+
+			<div class="menu-container menu-profile">
+				Register with your dadaviz account
+				<input placeholder="My Email Address" />
+				<input type="password" placeholder="Password" />
+				<button class="login" ><i class="fa fa-circle-o-notch"></i> Submit</button>
+				-or-<br />
+				<button class="twitter" onclick="Twitter.login()"><i class="fa fa-twitter"></i> Twitter</button>
+				<div class="menu-profile-validation-wait"><i class="fa fa-circle-o-notch role"></i></div>
+			</div>
+			
+			<div class="menu-container menu-subscriptions">
+				<div class="menu-subscriptions-add">
+					Add a Subscription to
+					<input id="menu-subscriptions-add-input" placeholder="Start Typing" onkeydown="menu.suggestionFilter($('#menu-subscriptions-add-input').val())"/>
+					<ul class="menu-subscriptions-suggestions">
+					</ul>
+				</div>
+				<ul class="menu-subscriptions-list">
+				</ul>
+				<button onclick="menu.plusSubscription()"><i class="fa fa-plus"></i></button>
+			</div>
+		</div><!-- end menu -->
+		
+		
+		<div class="toast toast_in">
+			<h3 class="toast-title">Hi there <i class="ion-ios7-close-empty" onclick="app.hideToast()"></i></h3>
+			<div class="toast-message">
+				XX
+			</div>
+		</div>
+		
+		<div class="full-Screen-digest">
+			<div class="full-Screen-digest-title">Digest <i class="ion-android-close"></i></div>
+		</div>
+		
+		<div class="flight-controll">
+		</div>
+
+
+	</body>
+	<script src="js/ga.js"></script>
+	<script>
+		ga_storage._setAccount('UA-51811681-1');
+		ga_storage._trackEvent('mobile_app', "open app");
+	
+		app.init();
+		
+	</script>
+
+</html>
