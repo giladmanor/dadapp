@@ -6,6 +6,7 @@ div.real {
 	right: 0;
 	background-color: #FFFFFF;
 	overflow-y: auto;
+	overflow-x: hide;
 	padding-top: 4em;
 }
 
@@ -33,7 +34,7 @@ div.real li.vizContainer {
 	font-size: 0.8em;
 	/*color: #989898;*/
 	color: #666666;
-	background-color: #fafafa;
+	background-color: #fff;
 }
 
 .likable{
@@ -46,8 +47,9 @@ div.real li.vizContainer {
 .likable div{
 	float:right;
 	/*margin-top: -4em;*/
-	font-size: 1em;
+	font-size: 1.5em;
 	margin-top:0.5em;
+	
 	
 }
 .likable i{

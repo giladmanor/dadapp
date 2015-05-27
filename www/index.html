@@ -5,9 +5,8 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 		<title>vizap</title>
 
-		<link href="css/style.css" rel="stylesheet">
-		<link href="css/gal.css" rel="stylesheet">
 		
+		<link href="css/dadapp.css" rel="stylesheet">
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 
 		<!-- cordova script (this will be a 404 during development) -->
@@ -28,21 +27,31 @@
 		<script id="viz-tpl" type="text/x-handlebars-template" >
 			<li class="vizContainer" id="viz_{{id}}" viz_id="{{id}}" prev="{{prev_viz}}" >
 				<div class="whiteblock bigblock">
-					<a id="vizInfo_{{id}}" href="#" class="title">{{title}}</a><div class="image" style="background-color: {{background_color}}"><img src="{{image_url}}" /></div>
+					<a id="vizInfo_{{id}}"  class="title">{{title}}</a>
+					<div class="image" style="background-color: {{background_color}}" onclick="app.simpleZoom(this)"><img class="image" src="{{image_url}}" /></div>
 					<div class="bar">
-					    <div class="info views">{{views}} Views</div>
+						
+						<!-- <div class="sharing">
+							<div class="sharebutton facebook">Share</div>
+							<div class="share-count">51</div>
+							<div class="sharebutton twitter">Tweet</div>
+							<div class="share-count">88</div>
+    					</div> -->
+						
+						
+					    <div class="info views">{{views}} views</div>
 					    {{#if author_twitter}}
 							<a href="#"><div class="info">@{{author_twitter}}</div></a>
 						{{/if}}
 					    {{#if data_source_url}}
-							<a href="{{data_source_url}}"><div class="info">{{data_source_name}}</div></a>
+							<a href="{{data_source_url}}"><div class="info">Data</div></a>
 						{{/if}}
+						
+						<div class="generic-share">
+							<i class="fa fa-share" onclick="app.share({{id}})"></i> Share
+						</div>
 					    
 					    
-					    <div class="info time">4h</div>
-					    
-					    <div class="sharebutton facebook"></div>
-					    <div onclick="app.like({{id}})" class="sharebutton facebook">{{likes}}</div>
 					    
 					</div>
 				</div>
@@ -51,106 +60,27 @@
 			
 		</script><!-- end viz renderer -->
 		
-		<div class="real" ontouchstart="app.touchStart(event);" ontouchmove="app.touchMove(event);">
+		<div id="header-m" class="header" >
+			<div id="header-d" class="header">
+				<a id="logolink" href="#"><img id="logo" src="img/logo.gif"><span class="logo-title">dadaviz</span></a>
+			</div>
+		</div>
+		
+		<div class="real feed-m" ontouchstart="app.touchStart(event);" ontouchmove="app.touchMove(event);">
 			<ul class="viz-container">
 			</ul>
-			<div class="loader"><i class="ion-ios7-reloading"></i></div>
+			<div class="loader"><i class="fa fa-refresh"></i></div>
 		</div>
+		
+		<!-- // <div style="position: absolute;top: 0;right: 0;" id="scrollll"></div> -->
+		
+		
+		
 
-		<div class="navbar navshow">
-			<span class="nav-title-icon" onclick="app.topNavClick()"><img src="img/logo.png" class="logo-img"></span>
-			
-			<div class="title" onclick="app.topNavClick()">
-			</div>
-			<div class="settings-buttons">
-				<!-- <i class="fa fa-bell" onclick="menu.show('subscriptions')"></i>&nbsp;&nbsp;&nbsp; -->
-				<i class="fa fa-heart favorites-button" onclick="app.toggleFavorites()"></i>
-			</div>
-			<i class="ion-android-search search-toggle" onclick="app.showSearch()"></i>
-		</div>
-
-		<div class="searchbar">
-			<i class="ion-android-search search-icon"></i>
-			<form onsubmit="app.search(this);return false;">
-				<input id="searchTextInput" type="text" name="text"/>
-			</form>
-			<i class="ion-ios7-close-empty search-close" onclick="app.hideSearch()"></i>
-		</div>
-		
-		<div class="searchLoading">
-			<i class="ion-ios7-reloading"></i>
-		</div>
-		
-		<div class="searchNoResult">
-			Meh, No Results <i class="fa fa-frown-o"></i>
-		</div>
-
-		<div class="zoom" ontouchstart="app.zoomStart(event);" ontouchmove="app.zoomMove(event);">
-		</div>
-		
-		<div class="back" onclick="app.back()">
-			<i class="ion-android-close"></i>
-		</div>
-
-		<div class="emotion share rolein" onclick="app.share()">
-			<i class="ion-android-share"></i>
-		</div>
-
-		<div class="emotion like ">
-			<i class="fa fa-heart"></i>
-		</div>
-
-		
-		
-		
-		<!-- menu -->
-		<div class="menu">
-			<div class="menu-title"  onclick="menu.back()">
-				<span class="menu-title-icon"><i class="fa fa-chevron-left"></i></span><span class="menu-sub"></span>
-			</div>
-			<div class="menu-container menu-options">
-			</div>
-
-			<div class="menu-container menu-profile">
-				Register with your dadaviz account
-				<input placeholder="My Email Address" />
-				<input type="password" placeholder="Password" />
-				<button class="login" ><i class="fa fa-circle-o-notch"></i> Submit</button>
-				-or-<br />
-				<button class="twitter" onclick="Twitter.login()"><i class="fa fa-twitter"></i> Twitter</button>
-				<div class="menu-profile-validation-wait"><i class="fa fa-circle-o-notch role"></i></div>
-			</div>
-			
-			<div class="menu-container menu-subscriptions">
-				<div class="menu-subscriptions-add">
-					Add a Subscription to
-					<input id="menu-subscriptions-add-input" placeholder="Start Typing" onkeydown="menu.suggestionFilter($('#menu-subscriptions-add-input').val())"/>
-					<ul class="menu-subscriptions-suggestions">
-					</ul>
-				</div>
-				<ul class="menu-subscriptions-list">
-				</ul>
-				<button onclick="menu.plusSubscription()"><i class="fa fa-plus"></i></button>
-			</div>
-		</div><!-- end menu -->
-		
-		
-		<div class="toast toast_in">
-			<h3 class="toast-title">Hi there <i class="ion-ios7-close-empty" onclick="app.hideToast()"></i></h3>
-			<div class="toast-message">
-				XX
-			</div>
-		</div>
-		
-		<div class="full-Screen-digest">
-			<div class="full-Screen-digest-title">Digest <i class="ion-android-close"></i></div>
-		</div>
-		
-		<div class="flight-controll">
-		</div>
-
+		<div class="zoomer"></div>
 
 	</body>
+	
 	<script src="js/ga.js"></script>
 	<script>
 		ga_storage._setAccount('UA-51811681-1');
