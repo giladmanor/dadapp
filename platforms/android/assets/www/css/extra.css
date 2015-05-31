@@ -1,12 +1,42 @@
-.loader{
+.loader {
 	/*border: solid 1px black;*/
 	text-align: center;
 }
 
-.zoomer{
-	position:absolute;
-	left:-1em;
-	right:0;
-	bottom:0;
-	background-color: #808080;
+.zoomer {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.zoomer img {
+	max-width: 100%;
+	opacity: 0.01;
+}
+
+div.zoomer-close {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0.2em;
+	border: solid 1px #444;
+	border-radius: 4px;
+	color: #777;
+	margin:0.1em;
+	/*background-color: #4DAFFA;*/
+}
+
+div.shadow {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #000000;
+	opacity: 0.01
 }

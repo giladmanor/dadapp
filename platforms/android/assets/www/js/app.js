@@ -1,11 +1,11 @@
 function numberWithCommas(x) {
 	//return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	if(x<1000){
+	if (x < 1000) {
 		return x;
-	}else if(x<1000000){
-		return Math.round(x/1000)+"k";
-	}else{
-		return Math.round(x/1000000)+"M";
+	} else if (x < 1000000) {
+		return Math.round(x / 1000) + "k";
+	} else {
+		return Math.round(x / 1000000) + "M";
 	}
 }
 
@@ -22,17 +22,20 @@ var app = {
 			//app.zoom(viz.id);
 			app.preload();
 		});
-		
-		setInterval(function(){
-			app.preload();
-		},2000);
+
+		setInterval(function() {
+			if ($(".real").css("display") !== "none") {
+				app.preload();
+			}
+
+		}, 2000);
 
 		document.addEventListener('deviceready', this.onDeviceReady, false);
 
 	},
 	onDeviceReady : function() {
 		//document.addEventListener("backbutton", app.back, true);
-		//document.addEventListener("backbutton", app.back, true);
+		document.addEventListener("backbutton", app.back, true);
 
 		localStorage.device_uuid = device.uuid;
 		service.login(localStorage.device_uuid, localStorage.device_uuid, function(d) {
@@ -75,7 +78,7 @@ var app = {
 			if (e.regid.length > 0) {
 				console.log("Regid " + e.regid);
 				localStorage.android_id = e.regid;
-				service.register_notifications(e.regid,menu.getDigestInfo(), function(d) {
+				service.register_notifications(e.regid, menu.getDigestInfo(), function(d) {
 					//alert("register success");
 				});
 			}
@@ -126,23 +129,103 @@ var app = {
 			break;
 		}
 	},
-	simpleZoom:function(that){
-		//$(".zoomer").remove();
-		console.log("zoom",$("body").scrollTop());
-		//$("body").append('<div class="zoomer">XXXX</div>');
+	simpleZoom : function(that) {
+		console.log("zoom", $("body").scrollTop());
+		app.mode = "zoom";
+		app.lastScrollPosition = $("body").scrollTop();
+		//window.location = "zoomer.html?"+($(that).children("img").attr("src"));
+		//$(".header").hide();
+		$(".real").fadeOut();
+		$(".shadow").show();
+		$(".shadow").animate({
+			opacity : 1
+		}, 1500);
+		$(".zoomer").show();
+		$(".zoomer-close").show();
+
+		$(".zoomer").panzoom({
+			minScale : 1,
+			maxScale : 2
+		});
+		$(".zoomer img").css("max-width", "");
+
+		$(".zoomer img").attr("src", $(that).children("img").attr("src"));
+		var initScale = 1;
+
+		console.log("!", $(".zoomer").panzoom("getMatrix"));
+		$(".zoomer").panzoom("setMatrix", [initScale, 0, 0, initScale, 0, 0]);
+		//$(".container").panzoom("setTransform","translate(-500px -100px)");
+
+		$(".zoomer img").load(function() {
+			var h = (window.innerHeight - $(this).height()) / 2;
+			$(this).css("margin-top", h + "px");
+			$(this).animate({
+				opacity : 1
+			}, 700);
+		});
+
+		that = $(".zoomer");
+		wiw = window.innerWidth;
+		wih = window.innerHeight;
+		iw = that.width() / 2;
+		ih = $(".zoomer img").height();
+		wihOih = wih/ih;
+		h = (wih - ih) / 2;
+		wihMihMh = wih - ih - h;
 		
-		window.location = "zoomer.html";//+$(that).children("img").attr("src");
-		
-		
-		
-		//$(".zoomer").css("top",$("body").scrollTop());
-		//$(".zoomer").attr("src",$(that).children("img").attr("src"));
-		//$(".zoomer").html($(that).html());
-		//$(".zoomer").children("img").css("max-width","100%");
-		//$(".zoomer").children("img").css("margin-top","50%");
-		//$(".zoomer").children("img").css("margin-bottom","50%");
+		scale = 1;
+		sx = 1;
+		sy = 1;
+		$(".zoomer").on('panzoompan', function(e, panzoom, x, y) {
+			scale = that.panzoom("getMatrix")[0] * 1;
+			sx = iw * (scale - 1);
+			sy = ih * (scale - 1) / 2;
+			
+			//$(".zoomer-close").html('<ul><li>'+scale+'</li><li>'+x+'</li><li>'+tx+'</li></ul>');
+			//$(".zoomer-close").html('<ul><li>' + h + '</li><li>' + (y - sy ) + '</li><li>' + sy + '</li><li>' + wih + '</li></ul>');
+			
+			//limitations on panning:
+
+			if (x > sx) {
+				that.panzoom("pan", sx, y);
+			} else if (x < -sx) {
+				that.panzoom("pan", -sx, y);
+			}
+
+			if (scale < wihOih) {
+				if (y + h - sy < 0) {
+					that.panzoom("pan", x, sy - h);
+				} else if (y + sy > wihMihMh) {
+					that.panzoom("pan", x, wihMihMh - sy);
+				}
+			} else {
+				if (y - sy > -h) {
+					that.panzoom("pan", x, sy-h);
+				} else if (y + sy < h) {
+					that.panzoom("pan", x, -sy +h);
+				}
+			}
+
+		});
+
 	},
-	
+	simpleZoomOut : function() {
+
+		$(".shadow").animate({
+			opacity : 0
+		}, 700, function() {
+			$(".shadow").hide();
+		});
+		$(".real").fadeIn();
+		//$(".header").show();
+		$(".zoomer").fadeOut();
+		$(".zoomer-close").hide();
+		$(".zoomer img").css("opacity", 0);
+		$(".zoomer img").attr("src", "");
+
+		$("body").scrollTop(app.lastScrollPosition);
+
+	},
 	hideToast : function() {
 		$(".toast").removeClass("toast_in");
 		$(".toast").addClass("toast_out");
@@ -153,13 +236,13 @@ var app = {
 	},
 	back : function(e) {
 		if (app.mode === "zoom") {
-			app.zoomOut();
+			app.simpleZoomOut();
 			app.mode = "";
 		} else if (menu.on) {
 			menu.back();
-		} else if (app.mode=="favorites") {
+		} else if (app.mode == "favorites") {
 			app.hideFavorites();
-		}else{
+		} else {
 			navigator.app.exitApp();
 		}
 
@@ -334,7 +417,7 @@ var app = {
 			$(".like").removeClass("heartbeet");
 		}, 1000);
 	},
-	topNavClick:null,
+	topNavClick : null,
 	toggleFavorites : function() {
 
 		if (app.mode != "favorites") {
@@ -348,7 +431,7 @@ var app = {
 	},
 	hideFavorites : function() {
 		//$(".favorites-button").removeClass("heartbeet-infinit");
-		app.mode="";
+		app.mode = "";
 		$(".title").html("");
 		app.topNavClick = app.goTop;
 		$(".nav-title-icon").html('<img src="img/logo.png" class="logo-img" >');
@@ -362,10 +445,10 @@ var app = {
 			app.showViz(viz);
 			app.preload();
 		});
-		
+
 	},
 	showFavorites : function() {
-		app.mode="favorites";
+		app.mode = "favorites";
 		//$(".flight-controll").html("");
 		app.topNavClick = app.back;
 		$(".nav-title-icon").html('<i class="fa fa-chevron-left"></i>');
@@ -377,7 +460,7 @@ var app = {
 		$('.viz-container').html("");
 		app.buffer = [];
 		app.loading = [];
-		service.favorites("top","mobile_" + localStorage.device_uuid, function(res) {
+		service.favorites("top", "mobile_" + localStorage.device_uuid, function(res) {
 			res.forEach(function(viz) {
 				setTimeout(function() {
 					app.showViz(viz);
@@ -447,20 +530,20 @@ var app = {
 	preload : function() {
 		//console.log("preload");
 		app.recordView();
-		var scrolloc = $(".viz-container").height() - $("body").scrollTop() ;
-		console.log("==",scrolloc);
+		var scrolloc = $(".viz-container").height() - $("body").scrollTop();
+		console.log("==", scrolloc);
 		//$("#scrollll").text(scrolloc);
 		//$(".flight-controll").html(app.mode);
-		
+
 		var prev = $(".vizContainer").last().attr('prev');
-		if(app.mode=="favorites"){
+		if (app.mode == "favorites") {
 			prev = $(".vizContainer").last().attr('viz_id');
 		}
-		
+
 		if (scrolloc < 1000 && app.loading.indexOf(prev) == -1) {
-			console.log("preload!",scrolloc);
+			console.log("preload!", scrolloc);
 			app.loading.push(prev);
-			
+
 			app.preloadGetter(prev);
 		}
 	},

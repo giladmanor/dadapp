@@ -15,7 +15,7 @@
 			right: 0;
 			padding: 0;
 			margin: 0;
-			background-color: #4DAFFA;
+			background-color: #f1f3f7;
 			overflow: hidden;
 		}
 		img {
@@ -50,6 +50,7 @@
 
 			
 			console.log("src: ", window.location.search);
+			$(".container img").attr("src",window.location.search.replace("?",""));
 			var initScale = 1;
 
 			console.log("!", $(".container").panzoom("getMatrix"));
@@ -60,7 +61,6 @@
 				var h = (window.innerHeight - $(this).height())/2;
 				$(this).css("margin-top", h+"px");
 				$(this).animate({opacity:1},500);
-				
 			});
 
 		});

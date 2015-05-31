@@ -1,0 +1,12 @@
+phonegap build android
+cd .\platforms\android
+ant release
+cd bin
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore C:\Users\user\dadaviz.keystore DadaApp-release-unsigned.apk dadaviz
+jarsigner -verify -verbose -certs .\DadaApp-release-unsigned.apk
+./zipalign -v 4 DadaApp-release-unsigned.apk DadaApp.apk
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore C:\Users\user\dadaviz.keystore CordovaApp-release-unsigned.apk dadaviz
+jarsigner -verify -verbose -certs .\CordovaApp-release-unsigned.apk
+ rm .\DadaApp.apk
+./zipalign -v 4 CordovaApp-release-unsigned.apk DadaApp.apk
