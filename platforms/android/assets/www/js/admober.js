@@ -42,6 +42,6 @@ var admober = {
 };
 
 setTimeout(function() {
-	//admober.show();
+	admober.show();
 }, 7000);
 

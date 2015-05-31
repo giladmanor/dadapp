@@ -5,12 +5,12 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 		<title>vizap</title>
 
-		
 		<link href="css/dadapp.css" rel="stylesheet">
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 
 		<!-- cordova script (this will be a 404 during development) -->
 		<script src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/jq.panzoom.js"></script>
 		<script src="js/handlebars-v2.0.0.js"></script>
 		<script src="cordova.js"></script>
 		<script src="PushNotification.js"></script>
@@ -23,71 +23,78 @@
 		<script src="js/twitter_login.js"></script>
 	</head>
 	<body  class="platform-android platform-cordova platform-webview">
-		
+
 		<script id="viz-tpl" type="text/x-handlebars-template" >
 			<li class="vizContainer" id="viz_{{id}}" viz_id="{{id}}" prev="{{prev_viz}}" >
-				<div class="whiteblock bigblock">
-					<a id="vizInfo_{{id}}"  class="title">{{title}}</a>
-					<div class="image" style="background-color: {{background_color}}" onclick="app.simpleZoom(this)"><img class="image" src="{{image_url}}" /></div>
-					<div class="bar">
-						
-						<!-- <div class="sharing">
-							<div class="sharebutton facebook">Share</div>
-							<div class="share-count">51</div>
-							<div class="sharebutton twitter">Tweet</div>
-							<div class="share-count">88</div>
-    					</div> -->
-						
-						
-					    <div class="info views">{{views}} views</div>
-					    {{#if author_twitter}}
-							<a href="#"><div class="info">@{{author_twitter}}</div></a>
-						{{/if}}
-					    {{#if data_source_url}}
-							<a href="{{data_source_url}}"><div class="info">Data</div></a>
-						{{/if}}
-						
-						<div class="generic-share">
-							<i class="fa fa-share" onclick="app.share({{id}})"></i> Share
-						</div>
-					    
-					    
-					    
-					</div>
-				</div>
+			<div class="whiteblock bigblock">
+			<a id="vizInfo_{{id}}"  class="title">{{title}}</a>
+			<div class="image" style="background-color: {{background_color}}" onclick="app.simpleZoom(this)"><img class="image" src="{{image_url}}" /></div>
+			<div class="bar">
+
+			<!-- <div class="sharing">
+			<div class="sharebutton facebook">Share</div>
+			<div class="share-count">51</div>
+			<div class="sharebutton twitter">Tweet</div>
+			<div class="share-count">88</div>
+			</div> -->
+
+			<div class="info views">{{views}} views</div>
+			{{#if author_twitter}}
+			<a href="#"><div class="info">@{{author_twitter}}</div></a>
+			{{/if}}
+			{{#if data_source_url}}
+			<a href="{{data_source_url}}"><div class="info">Data</div></a>
+			{{/if}}
+
+			<div class="generic-share">
+			<i class="fa fa-share" onclick="app.share({{id}})"></i> Share
+			</div>
+
+			</div>
+			</div>
 			</li>
-			
-			
+
 		</script><!-- end viz renderer -->
-		
+
 		<div id="header-m" class="header" >
 			<div id="header-d" class="header">
 				<a id="logolink" href="#"><img id="logo" src="img/logo.gif"><span class="logo-title">dadaviz</span></a>
 			</div>
 		</div>
-		
-		<div class="real feed-m" ontouchstart="app.touchStart(event);" ontouchmove="app.touchMove(event);">
-			<ul class="viz-container">
-			</ul>
-			<div class="loader"><i class="fa fa-refresh"></i></div>
-		</div>
-		
-		<!-- // <div style="position: absolute;top: 0;right: 0;" id="scrollll"></div> -->
-		
-		
-		
 
-		<div class="zoomer"></div>
+		<div class="real feed-m">
+			<ul class="viz-container"></ul>
+			<div class="loader">
+				<i class="fa fa-refresh"></i>
+			</div>
+		</div>
+
+		<!-- // <div style="position: absolute;top: 0;right: 0;" id="scrollll"></div> -->
+
+		<style>
+			
+
+		</style>
+
+		<div class="shadow">
+			<div class="zoomer">
+
+				<img src="http://front.dadaviz.com/media/viz_images/china-has-7-of-the-worlds-10-largest-ports-1432714614.64-1048169.png" />
+			</div>
+			<div class="zoomer-close" onclick="app.simpleZoomOut()">
+				Done
+			</div>
+		</div>
 
 	</body>
-	
+
 	<script src="js/ga.js"></script>
 	<script>
 		ga_storage._setAccount('UA-51811681-1');
 		ga_storage._trackEvent('mobile_app', "open app");
-	
+
 		app.init();
-		
+
 	</script>
 
 </html>

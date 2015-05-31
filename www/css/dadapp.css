@@ -30,7 +30,9 @@ body {
 	background-color: #f1f3f7;
 	font-family: Roboto;
 	font-weight: 300;
-	color: #9aaaaa
+	color: #9aaaaa;
+	padding: 0;
+	margin:0;
 }
 #wrap {
 	max-width: 1010px;
@@ -75,6 +77,7 @@ a:hover {
 .header {
 	font-weight: 500;
 	font-size: 18px;
+	margin-left:0.2em;
 }
 #header-m {
 
