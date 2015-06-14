@@ -33,6 +33,7 @@ body {
 	color: #9aaaaa;
 	padding: 0;
 	margin:0;
+	overflow: hidden;
 }
 #wrap {
 	max-width: 1010px;
@@ -44,6 +45,17 @@ body {
 	padding: 10px;
 	float: left;
 }
+
+.feedContainer{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	overflow: auto;
+}
+
+
 .feed {
 	max-width: 690px;
 	padding: 10px;
@@ -114,8 +126,31 @@ a:hover {
 	transform: scale(1.2)
 }
 
+.searchNoResult{
+	display:none;
+	position: absolute;
+	top:8em;
+	left:0;
+	right:0;
+	text-align: center;
+}
+
+.searchBTN{
+	position: absolute;
+	top:0.9em;
+	right:1em;
+	max-height: 1.5em;
+	border:solid 5px #fefefe;
+	border-radius: 50%;
+	background-color: white;
+	box-shadow: 1px 1px 10px #aaa;
+	opacity: 0.4;
+}
+
 .search {
-	background-image: url('search.gif');
+	position:absolute;
+	right:0;
+	background-image: url('/img/search.gif');
 	background-repeat: no-repeat;
 	background-size: 20px 20px;
 	background-position: left;
@@ -133,6 +168,61 @@ a:hover {
 .search:hover {
 	opacity: 1
 }
+
+.searchbar{
+	display:none;
+	position: absolute;
+	top:4em;
+	left:0em;
+	right:0em;
+	background-color: #f1f3f7;
+}
+.searchbar input{
+	/*text-align:center;*/
+	outline: 0;
+	padding:0.4em;
+	font-size:1.2em;
+	width:100%;
+	height: 2em;
+	border: none;
+	/*box-shadow: 1px 1px 10px #aaa;*/
+	border-top: dashed 1px #aaa;
+	border-bottom: dashed 1px #aaa;
+	background-color: #f1f3f7;
+}
+
+@-webkit-keyframes animate_searchin {
+0% { -webkit-transform: translate(0, -7em); }
+50% { -webkit-transform: translate(0, 0.5em); }
+100% { -webkit-transform: translate(0, 0); }
+}
+
+@-webkit-keyframes animate_searchout {
+0% { -webkit-transform: translate(0, 0); }
+50% { -webkit-transform: translate(0, 0.5em); }
+100% { -webkit-transform: translate(0, -7em); }
+}
+
+.searchshow {
+	-webkit-animation-name: animate_searchin;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: cubic-bezier(0,0,0.58,1);
+	display: block;
+}
+
+.searchhide {
+	-webkit-animation-name: animate_searchout;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: cubic-bezier(1,0.58,0,0);
+	
+}
+
+
+
 h2 {
 	font-size: 14px;
 	font-weight: 300
@@ -151,7 +241,7 @@ h2 {
 .bigblock .image {
 	display: block;
 	width: 100%;
-	height: 100%;
+	/*height: 100%;*/
 	position: relative
 }
 .bigblock .bar {
@@ -190,7 +280,8 @@ h2 {
 .info {
 	display: inline-block;
 	margin-right: 10px;
-	line-height: 30px
+	line-height: 30px;
+	color:#586878;
 }
 .time {
 	color: #9aaaaa
