@@ -55,31 +55,44 @@
 			</li>
 
 		</script><!-- end viz renderer -->
+		
+		<div class="feedContainer">
+			<div id="header-m" class="header" >
+				<div id="header-d" class="header">
+					<a id="logolink" href="#"><img id="logo" src="img/logo.gif"><span class="logo-title">dadaviz</span></a>
 
-		<div id="header-m" class="header" >
-			<div id="header-d" class="header">
-				<a id="logolink" href="#"><img id="logo" src="img/logo.gif"><span class="logo-title">dadaviz</span></a>
+				</div>
+			</div>
+			<div class="real feed-m">
+				<ul class="viz-container"></ul>
+				<div class="loader">
+					<i class="fa fa-refresh"></i>
+				</div>
 			</div>
 		</div>
-
-		<div class="real feed-m">
-			<ul class="viz-container"></ul>
-			<div class="loader">
-				<i class="fa fa-refresh"></i>
-			</div>
+		
+		<img class="searchBTN" src="img/search.gif" onclick="app.toggleSearch()"/>
+		<div class="searchbar">
+			<form onsubmit="app.search(this);return false;">
+				<input id="searchTextInput" type="text" name="text" placeholder="Start Typing"/>
+			</form>
 		</div>
+		
+		<div class="searchNoResult">no results for this search</div>
+		
+		
+		<!-- <input class="search tran" placeholder="Search"> -->
 
 		<!-- // <div style="position: absolute;top: 0;right: 0;" id="scrollll"></div> -->
-	
 
 		<div class="shadow">
 			<div class="zoomer">
-				<img src="http://front.dadaviz.com/media/viz_images/china-has-7-of-the-worlds-10-largest-ports-1432714614.64-1048169.png" />
+				<img src="" />
 			</div>
 			<div class="zoomer-close" onclick="app.simpleZoomOut()">
 				Done
 			</div>
-			
+
 		</div>
 
 	</body>

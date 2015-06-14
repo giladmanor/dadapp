@@ -83,11 +83,13 @@ C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\fontawesome-webfo
 C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\fontawesome-webfont.ttf \
 C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\fontawesome-webfont.woff \
 C:\Users\user\github\dadapp\platforms\android\assets\www\fonts\FontAwesome.otf \
+C:\Users\user\github\dadapp\platforms\android\assets\www\img\close.gif \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\GooglePlay_appStore.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\icon.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\icon_521.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\logo.gif \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\logo.png \
+C:\Users\user\github\dadapp\platforms\android\assets\www\img\search.gif \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\share-f.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www\img\share-t.png \
 C:\Users\user\github\dadapp\platforms\android\assets\www\js\admober.js \
