@@ -17,10 +17,9 @@
 
 		<!-- your app's js -->
 		<script src="js/app.js"></script>
-		<script src="js/menu.js"></script>
 		<script src="js/services.js"></script>
 		<script src="js/admober.js"></script>
-		<script src="js/twitter_login.js"></script>
+		
 	</head>
 	<body >
 
@@ -28,7 +27,7 @@
 			<li class="vizContainer" id="viz_{{id}}" viz_id="{{id}}" prev="{{prev_viz}}" >
 			<div class="whiteblock bigblock">
 			<a id="vizInfo_{{id}}"  class="title">{{title}}</a>
-			<div class="image" style="background-color: {{background_color}}" onclick="app.simpleZoom(this)"><img class="image" src="{{image_url}}" /></div>
+			<div class="image" style="background-color: {{background_color}}; " onclick="app.simpleZoom(this)"><img class="image" src="{{image_url}}" /></div>
 			<div class="bar">
 
 			<!-- <div class="sharing">
@@ -81,10 +80,6 @@
 		<div class="searchNoResult">no results for this search</div>
 		
 		
-		<!-- <input class="search tran" placeholder="Search"> -->
-
-		<!-- // <div style="position: absolute;top: 0;right: 0;" id="scrollll"></div> -->
-
 		<div class="shadow">
 			<div class="zoomer">
 				<img src="" />

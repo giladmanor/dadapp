@@ -68,16 +68,9 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\popup.html \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\PushNotification.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\zoomer.html \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\dadapp.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\emotion.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\extra.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\font-awesome.min.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\menu.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\navbar.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\real.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\roboto.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\style.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\toast.css \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\css\viz.css \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\fontawesome-webfont.eot \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\fontawesome-webfont.svg \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\fonts\fontawesome-webfont.ttf \
@@ -98,9 +91,7 @@ C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\ga.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\handlebars-v2.0.0.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\jq.panzoom.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\jquery-1.11.1.min.js \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\menu.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\services.js \
-C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\js\twitter_login.js \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.borismus.webintent \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.google.cordova.admob \
 C:\Users\user\Documents\GitHub\dadapp\platforms\android\assets\www\plugins\com.ionic.keyboard \
