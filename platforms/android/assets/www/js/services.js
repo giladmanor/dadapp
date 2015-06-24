@@ -73,7 +73,8 @@ var service = {
 		}, onSuccess);
 	},
 	load:function(id,successFunc){
-		service.get("/api/viz/" + id,successFunc);
+		id = id || "top";
+		service.get("/api/viz/list/" + id,successFunc);
 	},
 	quary : function(formObj,successFunc) {
 		var postData = $(formObj).serializeArray();

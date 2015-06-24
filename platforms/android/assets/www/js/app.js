@@ -14,16 +14,8 @@ var app = {
 		console.log(".");
 		app.searchModeV = "";
 		app.vizTpl = Handlebars.compile($("#viz-tpl").html());
-		localStorage.device_uuid = "ee15ca00f75f14bf";
 		app.preloadGetter = app.preloadRegularGetter;
-		app.topNavClick = app.goTop;
-
-		service.load("top", function(viz) {
-			app.showViz(viz);
-			//app.zoom(viz.id);
-			app.preload();
-		});
-
+				
 		setInterval(function() {
 			if ($(".real").css("display") !== "none") {
 				app.preload();
@@ -114,23 +106,6 @@ var app = {
 
 		default:
 			//alert('An unknown GCM event has occurred');
-			break;
-		}
-	},
-	pushMessageRenderer : function(data) {
-		switch( data.type ) {
-		case 'toast':
-			admober.pause = data.suspend_admob || 0;
-			setTimeout(function() {
-				$(".toast").show();
-				$(".toast").addClass("toast_in");
-				$(".toast-message").html(data.toast_message);
-			}, 4000);
-
-			break;
-
-		default:
-
 			break;
 		}
 	},
@@ -231,14 +206,6 @@ var app = {
 		$(".feedContainer").scrollTop(app.lastScrollPosition);
 
 	},
-	hideToast : function() {
-		$(".toast").removeClass("toast_in");
-		$(".toast").addClass("toast_out");
-		setTimeout(function() {
-			$(".toast").hide();
-		}, 500);
-
-	},
 	back : function(e) {
 		if (app.mode === "zoom") {
 			app.simpleZoomOut();
@@ -273,6 +240,25 @@ var app = {
 			app.loading.slice(app.loading.indexOf(viz.id), 1);
 			viz.data_source_name = app.urlTrim(viz.data_source_url);
 			viz.views = numberWithCommas(viz.views);
+			//viz.background_color = "#f39de1";
+			
+			w = window.innerWidth -42;
+			fs = 0;
+			if($(".bigblock").css("font-size")){
+				fs = $(".bigblock").css("font-size").replace("px","")*1;
+			}
+			if(fs>0){
+				r = w/fs ;
+				console.log(r);
+				$(".bigblock .image").css("width",r+"em");
+				$(".bigblock .image").css("height",r+"em");
+			}
+			
+			
+			//console.log(w,fs);
+			// viz.pre_height = w;
+			// viz.pre_width = w;
+			
 			if (first) {
 				$('.viz-container').prepend(app.vizTpl(viz));
 			} else {
@@ -291,6 +277,7 @@ var app = {
 	},
 	searchMode : function(mode) {
 		console.log("mode",mode);
+		$(".searchNoResult").hide();
 		switch (mode) {
 		case "request":
 			app.lastScrollPosition = $(".feedContainer").scrollTop();
@@ -375,70 +362,6 @@ var app = {
 
 		});
 	},
-
-	like : function(id) {
-		service.record_like(id, function(d) {
-			$(".likable_" + d.id).html('<div><i class="fa fa-heart"></i>&nbsp<span class="likes_value">' + d.likes + '</span></div>');
-		});
-		$(".like").show();
-		$(".like").addClass("heartbeet");
-		setTimeout(function() {
-			$(".like").hide();
-			$(".like").removeClass("heartbeet");
-		}, 1000);
-	},
-	topNavClick : null,
-	toggleFavorites : function() {
-
-		if (app.mode != "favorites") {
-			app.showFavorites();
-			app.mode = "favorites";
-		} else {
-			app.hideFavorites();
-			app.mode = "";
-		}
-
-	},
-	hideFavorites : function() {
-		//$(".favorites-button").removeClass("heartbeet-infinit");
-		app.mode = "";
-		$(".title").html("");
-		app.topNavClick = app.goTop;
-		$(".nav-title-icon").html('<img src="img/logo.png" class="logo-img" >');
-		//$(".flight-controll").html("");
-		app.preloadGetter = app.preloadRegularGetter;
-		$('.viz-container').html("");
-		app.buffer = [];
-		app.loading = [];
-		service.load("top", function(viz) {
-			console.log("load");
-			app.showViz(viz);
-			app.preload();
-		});
-
-	},
-	showFavorites : function() {
-		app.mode = "favorites";
-		//$(".flight-controll").html("");
-		app.topNavClick = app.back;
-		$(".nav-title-icon").html('<i class="fa fa-chevron-left"></i>');
-		app.preloadGetter = app.preloadFavoritesGetter;
-		$(".title").html('My Favorites');
-		// app.presearch = $('.viz-container').html();
-		// app.presearchBuffer = app.buffer;
-		//$(".favorites-button").addClass("heartbeet-infinit");
-		$('.viz-container').html("");
-		app.buffer = [];
-		app.loading = [];
-		service.favorites("top", "mobile_" + localStorage.device_uuid, function(res) {
-			res.forEach(function(viz) {
-				setTimeout(function() {
-					app.showViz(viz);
-				}, 500);
-			});
-		});
-	},
-
 	loading : [],
 	buffer : [],
 	recordView : function() {
@@ -455,8 +378,12 @@ var app = {
 	},
 	preloadGetter : null,
 	preloadRegularGetter : function(prev) {
-		service.load(prev, function(viz) {
-			app.showViz(viz);
+		service.load(prev, function(vizs) {
+			console.log(vizs);
+			vizs.forEach(function(viz){
+				app.showViz(viz);
+			});
+			
 			app.preload();
 		});
 	},
