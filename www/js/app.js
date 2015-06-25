@@ -242,13 +242,13 @@ var app = {
 			viz.views = numberWithCommas(viz.views);
 			//viz.background_color = "#f39de1";
 			
-			w = window.innerWidth -42;
+			w = window.innerWidth ;
 			fs = 0;
 			if($(".bigblock").css("font-size")){
 				fs = $(".bigblock").css("font-size").replace("px","")*1;
 			}
 			if(fs>0){
-				r = w/fs ;
+				r = w/fs -2.5;
 				console.log(r);
 				$(".bigblock .image").css("width",r+"em");
 				$(".bigblock .image").css("height",r+"em");
