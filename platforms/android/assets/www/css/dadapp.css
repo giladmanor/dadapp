@@ -53,8 +53,12 @@ body {
 	left:0;
 	right:0;
 	overflow: auto;
+	
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 .feed {
 	max-width: 690px;
@@ -245,7 +249,10 @@ h2 {
 	position: relative
 }
 .bigblock .bar {
-	margin-top: 10px
+	//background-color:#4DAFFA;
+	margin-top: 10px;
+	max-height: 2em;
+	overflow: hidden;
 }
 .bigblock .views {
 	font-size: 14px;
@@ -329,6 +336,8 @@ h2 {
 }
 
 .generic-share {
+	margin-top:-2em;
+	font-size:0.6em;
 	border-radius: 4px;
 	float: right;
 	background-color: #3b5998;
