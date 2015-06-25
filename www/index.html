@@ -29,14 +29,7 @@
 			<a id="vizInfo_{{id}}"  class="title">{{title}}</a>
 			<div class="image" style="background-color: {{background_color}}; " onclick="app.simpleZoom(this)"><img class="image" src="{{image_url}}" /></div>
 			<div class="bar">
-
-			<!-- <div class="sharing">
-			<div class="sharebutton facebook">Share</div>
-			<div class="share-count">51</div>
-			<div class="sharebutton twitter">Tweet</div>
-			<div class="share-count">88</div>
-			</div> -->
-
+			
 			<div class="info views">{{views}} views</div>
 			{{#if author_twitter}}
 			<a href="#"><div class="info">@{{author_twitter}}</div></a>
@@ -45,10 +38,11 @@
 			<a href="{{data_source_url}}"><div class="info">Data</div></a>
 			{{/if}}
 
+			
+
+			</div>
 			<div class="generic-share" onclick="app.share({{id}})">
 			<i class="fa fa-share"></i> Share
-			</div>
-
 			</div>
 			</div>
 			</li>
